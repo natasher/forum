@@ -12,6 +12,8 @@
                         <article>
                             <h4>{{ $thread->title }}</h4>
                         </article>
+
+                        <hr>
                     @endforeach
                 </div>
             </div>
