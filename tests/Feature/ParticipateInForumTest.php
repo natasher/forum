@@ -18,12 +18,7 @@ class ParticipateInForum extends TestCase
     function an_unauthenticated_users_may_not_add_replies()
     {
         $this->expectException( 'Illuminate\Auth\AuthenticationException' );
-
-        $thread = factory( Thread::class )->create();
-
-        // When the user adds a reply to the thread
-        $reply = factory( Reply::class )->make();
-        $this->post( $thread->path() . '/replies', $reply->toArray() );
+        $this->post( '/threads/1/replies', [] );
     }
 
     /** @test */
