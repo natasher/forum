@@ -23,7 +23,7 @@ class ParticipateInForum extends TestCase
 
         // When the user adds a reply to the thread
         $reply = factory( Reply::class )->make();
-        $this->post( '/threads/' . $thread->id . '/replies', $reply->toArray() );
+        $this->post( $thread->path() . '/replies', $reply->toArray() );
 
         // Then their reply should be visible on the page.
         $this->get( $thread->path() )
