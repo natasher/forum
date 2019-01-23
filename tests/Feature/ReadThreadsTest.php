@@ -21,14 +21,14 @@ class ThreadTest extends TestCase
     /** @test */
     public function a_user_can_view_all_threads()
     {
-        $this->get( '/threads/' . $this->thread->id )
+        $this->get( '/threads/' )
             ->assertSee( $this->thread->title );
     }
 
     /** @test */
     function a_user_can_view_single_thread()
     {
-        $this->get( '/threads/' . $this->thread->id )
+        $this->get( $this->thread->path() )
             ->assertSee( $this->thread->title );
     }
 
@@ -38,7 +38,7 @@ class ThreadTest extends TestCase
         $reply = factory( Reply::class )
             ->create([ 'thread_id' => $this->thread->id ]);
 
-        $this->get( '/threads/' . $this->thread->id )
+        $this->get( $this->thread->path() )
             ->assertSee( $reply->body );
     }
 
