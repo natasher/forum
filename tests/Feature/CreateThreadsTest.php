@@ -22,7 +22,7 @@ class CreateThreadsTest extends TestCase
 
         $this->post( '/threads', $thread->toArray() );
 
-        $this->get( $thread->path() )
+        $this->get( '/threads/1' )
             ->assertSee( $thread->title )
             ->assertSee( $thread->body );
     }
