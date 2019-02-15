@@ -39,4 +39,12 @@ class CreateThreadsTest extends TestCase
             ->assertSee( $thread->body );
     }
 
+    /** @test */
+    function a_thread_belongs_to_a_channel()
+    {
+        $thread = create( 'App\Thread' );
+
+        $this->assertInstanceOf( 'App\Channel', $thread->channel );
+    }
+
 }
