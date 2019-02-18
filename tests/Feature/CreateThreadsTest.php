@@ -47,4 +47,15 @@ class CreateThreadsTest extends TestCase
         $this->assertInstanceOf( 'App\Channel', $thread->channel );
     }
 
+    /** @test */
+    function a_thread_requires_a_title()
+    {
+        $this->signIn();
+
+        $thread = make( 'App\Thread', [ 'title' => null ]);
+
+        $this->post( '/threads', $thread->toArray() )
+            ->assertSessionHasErrors( 'title' );
+    }
+
 }
