@@ -40,9 +40,11 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Channels
                             </a>
-                            @foreach ( App\Channel::all() as $channel )
-                            <a class="dropdown-item" href="/threads/{{ $channel->slug }}">{{ $channel->name }}</a>
-                            @endforeach
+                            <div class="dropdown-menu">
+                                @foreach ( App\Channel::all() as $channel )
+                                    <a class="dropdown-item" href="/threads/{{ $channel->slug }}">{{ $channel->name }}</a>
+                                @endforeach
+                            </div>
                         </div>
                     </li>
                     </ul>
