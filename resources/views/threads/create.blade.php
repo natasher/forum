@@ -12,6 +12,12 @@
                         @csrf
 
                         <div class="form-group">
+                            <label for="channel_id">Choose a channel:</label>
+                            <select name="channel_id" id="channel_id" class="form-control">
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label for="title">Title:</label>
                             <input type="text" name="title" class="form-control" value="{{ old( 'title' ) }}">
                         </div>
