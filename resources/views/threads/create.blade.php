@@ -14,6 +14,10 @@
                         <div class="form-group">
                             <label for="channel_id">Choose a channel:</label>
                             <select name="channel_id" id="channel_id" class="form-control">
+                                <option value="">Choose One</option>
+                                @foreach ( App\Channel::all() as $channel )
+                                    <option value="{{ $channel->id }}">{{ $channel->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
