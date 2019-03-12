@@ -22,6 +22,12 @@ class ThreadsController extends Controller
      */
     public function index( Channel $channel )
     {
+        $threads = $this->getThreads( $channel );
+
+        return view( 'threads.index', compact( 'threads' ) );
+    }
+
+    protected function getThreads( Channel $channel ) {
         if ( $channel->exists ) {
             $threads = $channel->threads()->latest();
         } else {
@@ -34,9 +40,7 @@ class ThreadsController extends Controller
             $threads->where( 'user_id', $user->id );
         }
 
-        $threads = $threads->get();
-
-        return view( 'threads.index', compact( 'threads' ) );
+        return $threads = $threads->get();
     }
 
     /**
