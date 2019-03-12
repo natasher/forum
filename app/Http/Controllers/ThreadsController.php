@@ -22,7 +22,8 @@ class ThreadsController extends Controller
      */
     public function index( Channel $channel )
     {
-        $threads = $this->getThreads( $channel );
+        Thread::filter( $filters )->get();
+        // $threads = $this->getThreads( $channel );
 
         return view( 'threads.index', compact( 'threads' ) );
     }
