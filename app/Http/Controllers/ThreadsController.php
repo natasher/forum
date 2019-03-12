@@ -22,15 +22,20 @@ class ThreadsController extends Controller
      */
     public function index( Channel $channel, ThreadFilters $filters )
     {
-        if ( $channel->exists ) {
-            $threads = $channel->threads()->latest();
-        } else {
-            $threads = Thread::latest();
-        }
+        $threads = $this->getThreads( $channel, $filters );
 
         $threads = $threads->filter( $filters )->get();
 
         return view( 'threads.index', compact( 'threads' ) );
+    }
+
+    protected function getThreads( Channel $channel )
+    {
+        if ( $channel->exists ) {
+            return $channel->threads()->latest();
+        } else {
+            return Thread::latest();
+        }
     }
 
     /**
