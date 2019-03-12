@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 abstract class Filters {
 
     protected $request, $builder;
+    protected $filters = [ 'by' ];
 
     /**
      * ThreadFilters constructor.
@@ -20,11 +21,18 @@ abstract class Filters {
     {
         $this->builder = $builder;
 
-        if ( $this->request->has( 'by' ) ) {
-            $this->by( $this->request->by );
+        foreach( $this->getFilters() as $filter => $value ) {
+            if ( method_exists( $this, $filter )) {
+                $this->$filter( $value );
+            }
         }
 
         return $this->builder;
+    }
+
+    public function getFilters()
+    {
+        return $this->request->only( $this->filters );
     }
 
 }
