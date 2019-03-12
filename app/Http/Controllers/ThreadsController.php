@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Thread;
 use App\Channel;
+use App\ThreadFilters;
 use Illuminate\Http\Request;
 
 class ThreadsController extends Controller
@@ -20,7 +21,7 @@ class ThreadsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( Channel $channel )
+    public function index( Channel $channel, ThreadFilters $filters )
     {
         Thread::filter( $filters )->get();
         // $threads = $this->getThreads( $channel );
