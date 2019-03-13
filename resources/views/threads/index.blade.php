@@ -17,7 +17,9 @@
                                     </a>
                                 </h4>
 
-                                <strong>{{ $thread->replies_count }} {{ str_plural( 'reply', $thread->replies_count ) }}</strong>
+                                <a href="{{ $thread->path() }}">
+                                    {{ $thread->replies_count }} {{ str_plural( 'reply', $thread->replies_count ) }}
+                                </a>
                             </div>
 
                             <div class="body">{{ $thread->body }}</div>
