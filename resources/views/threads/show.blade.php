@@ -20,10 +20,11 @@
         <div class="col-md-4">
             <div class="card">
 
-                <div class="card-header">
-                </div>
-
                 <div class="card-body">
+                    <p>
+                        This thread was published {{ $thread->created_at->diffForHumans() }} by
+                        <a href="#">{{ $thread->created_ }}</a>, and currently has {{ $thread->replies->count() }} comments.
+                    </p>
                 </div>
 
             </div>
