@@ -35,12 +35,11 @@
     <div class="row mt-4">
         <div class="col-md-8">
 
-            <?php $replies = $thread->replies()->paginate( 1 ); ?>
-
             @foreach ( $replies as $reply )
                 @include ( 'threads.reply' )
             @endforeach
 
+            <br>
             {{ $replies->links() }}
 
         </div>
