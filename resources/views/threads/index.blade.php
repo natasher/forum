@@ -11,7 +11,7 @@
                     @foreach ( $threads as $thread )
                         <article>
                             <div class="level">
-                                <h4>
+                                <h4 class="flex">
                                     <a href="{{ $thread->path() }}">
                                         {{ $thread->title }}
                                     </a>
