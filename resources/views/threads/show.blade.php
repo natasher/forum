@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
@@ -16,20 +16,37 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="card">
+
+                <div class="card-body">
+                    <p>
+                        This thread was published {{ $thread->created_at->diffForHumans() }} by
+                        <a href="#">{{ $thread->created_ }}</a>, and currently has {{ $thread->replies_count }} {{ str_plural( 'comment', $thread->replies_count ) }}.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
-    <div class="row justify-content-center mt-4">
+    <div class="row mt-4">
         <div class="col-md-8">
 
-            @foreach ( $thread->replies as $reply )
+            @foreach ( $replies as $reply )
                 @include ( 'threads.reply' )
             @endforeach
+
+            <br>
+            {{ $replies->links() }}
 
         </div>
     </div>
 
     @if ( auth()->check() )
-        <div class="row justify-content-center mt-4">
+        <div class="row mt-4">
             <div class="col-md-8">
 
                 <form action="{{ $thread->path() . '/replies' }}" method="post">
@@ -45,7 +62,7 @@
             </div>
         </div>
     @else
-        <div class="row justify-content-center mt-4">
+        <div class="row mt-4">
             <div class="col-md-8">
                 You need to <a href="{{ route( 'login' ) }}">log in</a> to comment a thread.
             </div>
