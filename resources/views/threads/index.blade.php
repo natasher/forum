@@ -15,6 +15,8 @@
                                     {{ $thread->title }}
                                 </a>
                             </h4>
+
+                            <div class="body">{{ $thread->body }}</div>
                         </article>
 
                         <hr>
