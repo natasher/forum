@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-center mt-4">
+    <div class="row mt-4">
         <div class="col-md-8">
 
             @foreach ( $thread->replies as $reply )
@@ -29,7 +29,7 @@
     </div>
 
     @if ( auth()->check() )
-        <div class="row justify-content-center mt-4">
+        <div class="row mt-4">
             <div class="col-md-8">
 
                 <form action="{{ $thread->path() . '/replies' }}" method="post">
@@ -45,7 +45,7 @@
             </div>
         </div>
     @else
-        <div class="row justify-content-center mt-4">
+        <div class="row mt-4">
             <div class="col-md-8">
                 You need to <a href="{{ route( 'login' ) }}">log in</a> to comment a thread.
             </div>
