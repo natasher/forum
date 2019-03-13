@@ -80,7 +80,6 @@ class ThreadsController extends Controller
      */
     public function show($channelId, Thread $thread)
     {
-        return $thread->replyCount;
         return view( 'threads.show', compact( 'thread' ));
     }
 
