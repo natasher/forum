@@ -20,16 +20,17 @@ class FavoritesTest extends TestCase
     }
 
     /** @test */
-    // public function an_authenticated_user_can_favorite_any_reply()
-    // {
-    //     // /replies/id/favorites
-    //     $reply = create( 'App\Reply' );
+    public function an_authenticated_user_can_favorite_any_reply()
+    {
+        $this->signIn();
 
-    //     // If I post to a "favorite" endpoint
-    //     $this->post( 'replies/' . $reply->id . '/favorites' );
+        $reply = create( 'App\Reply' );
 
-    //     // It should be recorded in the database.
-    //     $this->assertCount( 1, $reply->favorites );
-    // }
+        // If I post to a "favorite" endpoint
+        $this->post( 'replies/' . $reply->id . '/favorites' );
+
+        // It should be recorded in the database.
+        $this->assertCount( 1, $reply->favorites );
+    }
 
 }
