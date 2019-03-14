@@ -22,7 +22,9 @@ class Reply extends Model
 
     public function favorite()
     {
-        $this->favorites()->create([ 'user_id' => auth()->id() ]);
+        if (! $this->favorites()->where([ 'user_id' => auth()->id() ])->exists() ) {
+            $this->favorites()->create([ 'user_id' => auth()->id() ]);
+        }
     }
 
 }
