@@ -34,6 +34,9 @@ class ThreadFilters extends Filters
      */
     protected function popular()
     {
+        // Wipe out orders, Builder#oderBy its collide with Thread::latest().
+        $this->builder->getQuery()->orders = [];
+
         return $this->builder->orderBy( 'replies_count', 'desc' );
     }
 

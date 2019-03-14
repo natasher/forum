@@ -80,7 +80,7 @@ class ThreadTest extends TestCase
         $threadWithNoReplies = $this->thread;
 
         // When I filter all threads by popularity
-        $response = $this->getJson('threads?popularity=1')->json();
+        $response = $this->getJson('threads?popular=1')->json();
 
         // Then they should be returned from most replies to least.
         // $response->assertSee( $threadWithThreeReplies->title );
