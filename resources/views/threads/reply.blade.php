@@ -10,7 +10,7 @@
             <div>
                 <form action="/replies/{{ $reply->id }}/favorites" method="post">
                     @csrf
-                    <button type="submit" class="btn btn-primary">Favorite</button>
+                    <button type="submit" class="btn">Favorite</button>
                 </form>
             </div>
         </div>
