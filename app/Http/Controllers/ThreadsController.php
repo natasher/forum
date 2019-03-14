@@ -24,18 +24,23 @@ class ThreadsController extends Controller
     {
         $threads = $this->getThreads( $channel, $filters );
 
-        $threads = $threads->filter( $filters )->get();
+        // $threads = $threads->filter( $filters )->get();
+        if ( request()->wantsJson() ) {
+            return $threads;
+        }
 
         return view( 'threads.index', compact( 'threads' ) );
     }
 
-    protected function getThreads( Channel $channel )
+    protected function getThreads( Channel $channel, ThreadFilters $filters )
     {
+        $threads = Thread::latest()->filter( $filters );
+
         if ( $channel->exists ) {
-            return $channel->threads()->latest();
-        } else {
-            return Thread::latest();
+            $threads->where( 'channel_id', $channel->id );
         }
+
+        return $threads->get();
     }
 
     /**
