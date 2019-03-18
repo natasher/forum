@@ -9,6 +9,7 @@ class ProfilesController extends Controller
 
     public function show()
     {
+        return view( 'profiles.show' );
     }
 
 }
