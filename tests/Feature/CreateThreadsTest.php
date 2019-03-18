@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\User;
+use App\Reply;
 use App\Thread;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -79,12 +80,14 @@ class CreateThreadsTest extends TestCase
         $this->signIn();
 
         $thread = create( Thread::class );
+        $reply  = create( Reply::class, [ 'thread_id' => $thread->id ]);
 
         $response = $this->json( 'DELETE', $thread->path() );
 
         $response->assertStatus( 204 );
 
-        $this->assertDatabaseMissing( 'threads', [ 'id' => $thread->id ] );
+        $this->assertDatabaseMissing( 'threads', [ 'id' => $thread->id ]);
+        $this->assertDatabaseMissing( 'replies', [ 'id' => $reply->id ]);
     }
 
     public function publishThread( $overrides = [] )
