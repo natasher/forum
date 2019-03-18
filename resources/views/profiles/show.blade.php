@@ -7,7 +7,7 @@
             <small>Since {{ $profileUser->created_at->diffForHumans() }}</small>
         </div>
 
-        @foreach ( $profileUser->threads as $thread )
+        @foreach ( $threads as $thread )
             <div class="card">
                 <div class="card-header">
                     <div class="level">
