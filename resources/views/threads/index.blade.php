@@ -2,34 +2,26 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Forum Threads</div>
-
-                <div class="card-body">
-                    @foreach ( $threads as $thread )
-                        <article>
-                            <div class="level">
-                                <h4 class="flex">
-                                    <a href="{{ $thread->path() }}">
-                                        {{ $thread->title }}
-                                    </a>
-                                </h4>
-
-                                <a href="{{ $thread->path() }}">
-                                    {{ $thread->replies_count }} {{ str_plural( 'reply', $thread->replies_count ) }}
-                                </a>
-                            </div>
-
-                            <div class="body">{{ $thread->body }}</div>
-                        </article>
-
-                        <hr>
-                    @endforeach
-                </div>
-            </div>
-        </div>
+    <div class="pb-2 mt-4 mb-2 border-bottom display-3">
+        Forum Threads
     </div>
+
+    @foreach ( $threads as $thread )
+        <article class="card mb-4">
+            <div class="level card-header">
+                <h4 class="flex">
+                    <a href="{{ $thread->path() }}">
+                        {{ $thread->title }}
+                    </a>
+                </h4>
+
+                <a href="{{ $thread->path() }}">
+                    {{ $thread->replies_count }} {{ str_plural( 'reply', $thread->replies_count ) }}
+                </a>
+            </div>
+
+            <div class="card-body">{{ $thread->body }}</div>
+        </article>
+    @endforeach
 </div>
 @endsection
