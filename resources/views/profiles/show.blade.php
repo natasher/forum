@@ -10,8 +10,14 @@
         @foreach ( $profileUser->threads as $thread )
             <div class="card">
                 <div class="card-header">
-                    <a href="#">{{ $thread->creator->name }}</a> posted:
-                    {{ $thread->title }}
+                    <div class="level">
+                        <span class="flex">
+                            <a href="#">{{ $thread->creator->name }}</a> posted:
+                            {{ $thread->title }}
+                        </span>
+
+                        <span>{{ $thread->created_at->diffForHumans() }}</span>
+                    </div>
                 </div>
 
                 <div class="card-body">
