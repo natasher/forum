@@ -15,7 +15,7 @@ class ProfilesTest extends TestCase
     {
         $user = create( User::class );
 
-        $this->get( "/profiles/{{ $user->name }}" )
+        $this->get( "/profiles/{$user->name}" )
             ->assertSee( $user->name );
     }
 
