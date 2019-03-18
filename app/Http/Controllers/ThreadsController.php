@@ -122,6 +122,8 @@ class ThreadsController extends Controller
      */
     public function destroy( $channel, Thread $thread)
     {
-        //
+        $thread->delete();
+
+        return response([], 204 );
     }
 }
