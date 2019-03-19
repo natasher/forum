@@ -75,6 +75,18 @@ class CreateThreadsTest extends TestCase
     }
 
     /** @test */
+    function guest_cannot_delete_threads()
+    {
+        $this->withExceptionHandling();
+
+        $thread = create( Thread::class );
+
+        $response = $this->delete( $thread->path() );
+
+        $response->assertRedirect( '/login' );
+    }
+
+    /** @test */
     function a_thread_can_be_deleted()
     {
         $this->signIn();
