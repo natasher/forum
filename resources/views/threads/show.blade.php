@@ -13,12 +13,14 @@
                             {{ $thread->title }}
                         </span>
 
-                        <form action="{{ $thread->path() }}" method="post">
-                            @csrf
-                            @method( 'DELETE' )
+                        @if ( Auth::check() )
+                            <form action="{{ $thread->path() }}" method="post">
+                                @csrf
+                                @method( 'DELETE' )
 
-                            <button type="submit" class="btn btn-link">Delete Thread</button>
-                        </form>
+                                <button type="submit" class="btn btn-link">Delete Thread</button>
+                            </form>
+                        @endif
                     </div>
                 </div>
 
