@@ -6,7 +6,7 @@
         Forum Threads
     </div>
 
-    @foreach ( $threads as $thread )
+    @forelse ( $threads as $thread )
         <article class="card mb-4">
             <div class="level card-header">
                 <h4 class="flex">
@@ -22,6 +22,8 @@
 
             <div class="card-body">{{ $thread->body }}</div>
         </article>
-    @endforeach
+    @empty
+        <p>There are no relevant results at this time.</p>
+    @endforelse
 </div>
 @endsection
