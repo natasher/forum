@@ -91,11 +91,11 @@ class CreateThreadsTest extends TestCase
     }
 
     /** @test */
-    function a_thread_can_be_deleted()
+    function authorized_users_can_delete_a_thread()
     {
         $this->signIn();
 
-        $thread = create( Thread::class );
+        $thread = create( Thread::class, [ 'user_id' => auth()->id() ]);
         $reply  = create( Reply::class, [ 'thread_id' => $thread->id ]);
 
         $response = $this->json( 'DELETE', $thread->path() );
