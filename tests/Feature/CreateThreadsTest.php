@@ -81,9 +81,13 @@ class CreateThreadsTest extends TestCase
 
         $thread = create( Thread::class );
 
-        $response = $this->delete( $thread->path() );
+        $this->delete( $thread->path() )
+            ->assertRedirect( '/login' );
 
-        $response->assertRedirect( '/login' );
+        $this->signIn();
+
+        $this->delete( $thread->path() )
+            ->assertRedirect( '/login' );
     }
 
     /** @test */
