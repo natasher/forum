@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Reply;
 use App\Thread;
 use App\Activity;
 use Tests\TestCase;
@@ -28,5 +29,15 @@ class ActivityTest extends TestCase
         $activity = Activity::first();
 
         $this->assertEquals( $activity->subject->id, $thread->id );
+    }
+
+    /** @test */
+    function it_records_activity_when_a_reply_is_created()
+    {
+        $this->signIn();
+
+        $reply = create( Reply::class );
+
+        $this->assertEquals( 2, Activity::count() );
     }
 }
