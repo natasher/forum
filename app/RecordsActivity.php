@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Activity;
+
 trait RecordsActivity
 {
 
@@ -20,6 +22,11 @@ trait RecordsActivity
             'user_id' => auth()->id(),
             'type'    => $this->getActivityType( $event ),
         ]);
+    }
+
+    public function activity()
+    {
+        return $this->morphMany( Activity::class, 'subject' );
     }
 
     protected function getActivityType( $event )
