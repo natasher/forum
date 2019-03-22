@@ -2,7 +2,8 @@
     <div class="card-header">
         <div class="level">
             <span class="flex">
-                {{ $profileUser->name }} replied to "{{ $activity->subject->thread->title }}"
+                {{ $profileUser->name }} replied to
+                <a href="{{ $activity->subject->thread->path() }}">"{{ $activity->subject->thread->title }}"</a>
             </span>
         </div>
     </div>
