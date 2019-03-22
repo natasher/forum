@@ -7,8 +7,12 @@
             <small>Since {{ $profileUser->created_at->diffForHumans() }}</small>
         </div>
 
-        @foreach ( $activities as $activity )
-            @include ( "profiles.activities.{$activity->type}" )
+        @foreach ( $activities as $date => $activity )
+            <h3 class="pb-2 mt-4 mb-2 border-bottom">{{ $date }}</h3>
+
+            @foreach( $activity as $record )
+                @include ( "profiles.activities.{$record->type}", [ 'activity' => $record ] )
+            @endforeach
         @endforeach
 
         {{-- {{ $threads->links() }} --}}
