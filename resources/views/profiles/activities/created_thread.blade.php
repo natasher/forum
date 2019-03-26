@@ -1,13 +1,11 @@
-<div class="card mt-2">
-    <div class="card-header">
-        <div class="level">
-            <span class="flex">
-                {{ $profileUser->name }} published a "<a href="{{ $activity->subject->path() }}">{{ $activity->subject->title }}</a>"
-            </span>
-        </div>
-    </div>
+@component( 'profiles.activities.activity' )
 
-    <div class="card-body">
+    @slot( 'heading' )
+        {{ $profileUser->name }} published a "<a href="{{ $activity->subject->path() }}">{{ $activity->subject->title }}</a>"
+    @endslot
+
+    @slot( 'body' )
         {{ $activity->subject->body }}
-    </div>
-</div>
+    @endslot
+
+@endcomponent
