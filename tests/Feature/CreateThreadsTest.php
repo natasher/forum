@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\User;
 use App\Reply;
 use App\Thread;
+use App\Activity;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -112,6 +113,7 @@ class CreateThreadsTest extends TestCase
             'subject_id'   => $reply->id,
             'subject_type' => get_class( $reply )
         ]);
+        $this->assertEquals( 0, Activity::count() );
     }
 
     public function publishThread( $overrides = [] )
