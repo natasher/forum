@@ -46,14 +46,17 @@ class ActivityTest extends TestCase
     function it_fetches_a_feed_for_any_user()
     {
         // Given we have a thread
+        // And another thread from a week ago
         $this->signIn();
 
-        create( Thread::class, [ 'user_id' => auth()->id() ]);
-        // And another thread from a week ago
-        create( Thread::class, [
-            'user_id' => auth()->id(),
-            'created_at' => Carbon::now()->subWeek(),
-        ]);
+        create( Thread::class, [ 'user_id' => auth()->id() ], 2);
+
+        auth()->user()
+            ->activity()
+            ->first()
+            ->update([
+                'created_at' => Carbon::now()->subWeek()
+            ]);
 
         // When we fetch their feed.
         $feed = Activity::feed( auth()->user() );
@@ -65,6 +68,10 @@ class ActivityTest extends TestCase
                     Carbon::now()->format( 'Y-m-d' )
                 )
         );
+
+        $this->assertTrue( $feed->keys()->contains(
+            Carbon::now()->subWeek()->format( 'Y-m-d' )
+        ));
 
     }
 
