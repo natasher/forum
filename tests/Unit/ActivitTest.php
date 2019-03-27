@@ -40,4 +40,14 @@ class ActivityTest extends TestCase
 
         $this->assertEquals( 2, Activity::count() );
     }
+
+    /** @test */
+    function it_fetches_a_feed_for_any_user()
+    {
+        // Given we have a thread
+        // And another thread from a week ago
+        // When we fetch their feed.
+        // Then, it should be returned in the proper format.
+    }
+
 }
