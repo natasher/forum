@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
@@ -14,12 +13,12 @@ class Activity extends Model
         return $this->morphTo();
     }
 
-    public static function feed( User $user )
+    public static function feed( $user, $take = 50 )
     {
         return static::where( 'user_id', $user->id )
             ->latest()
             ->with('subject')
-            ->take( 50 )
+            ->take( $take )
             ->get()
             ->groupBy(function ( $activity ) {
                 return $activity->created_at->format( 'Y-m-d');
