@@ -1,6 +1,6 @@
 <template>
-    <div class="alert alert-success alert-flash" role="alert">
-        {{ body }}
+    <div class="alert alert-success alert-flash" role="alert" v-show="show">
+        Success! {{ body }}
     </div>
 </template>
 
@@ -14,6 +14,7 @@
         data() {
             return {
                 body: this.message,
+                show: false,
             }
         },
 
