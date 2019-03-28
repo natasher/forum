@@ -13,8 +13,15 @@
 
         data() {
             return {
-                body: this.message,
+                body: '',
                 show: false,
+            }
+        },
+
+        created() {
+            if ( this.message ) {
+                this.body = this.message;
+                this.show = true;
             }
         },
 
