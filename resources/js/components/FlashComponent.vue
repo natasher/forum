@@ -1,6 +1,6 @@
 <template>
     <div class="alert alert-success" role="alert">
-        A simple success alert—check it out!
+        {{ body }}
     </div>
 </template>
 
@@ -8,6 +8,14 @@
     export default {
 
         name: 'flash',
+
+        props: [ 'message' ],
+
+        data() {
+            return {
+                body: this.message,
+            }
+        },
 
     }
 </script>
