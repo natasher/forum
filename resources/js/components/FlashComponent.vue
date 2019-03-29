@@ -22,6 +22,10 @@
             if ( this.message ) {
                 this.body = this.message;
                 this.show = true;
+
+                setTimeout(() => {
+                    this.show = false;
+                }, 3000);
             }
         },
 

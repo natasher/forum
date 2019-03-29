@@ -1774,8 +1774,20 @@ __webpack_require__.r(__webpack_exports__);
   props: ['message'],
   data: function data() {
     return {
-      body: this.message
+      body: '',
+      show: false
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    if (this.message) {
+      this.body = this.message;
+      this.show = true;
+      setTimeout(function () {
+        _this.show = false;
+      }, 3000);
+    }
   }
 });
 
@@ -37471,10 +37483,13 @@ var render = function() {
   return _c(
     "div",
     {
+      directives: [
+        { name: "show", rawName: "v-show", value: _vm.show, expression: "show" }
+      ],
       staticClass: "alert alert-success alert-flash",
       attrs: { role: "alert" }
     },
-    [_vm._v("\n    " + _vm._s(_vm.body) + "\n")]
+    [_c("strong", [_vm._v("Success!")]), _vm._v(" " + _vm._s(_vm.body) + "\n")]
   )
 }
 var staticRenderFns = []
