@@ -15,6 +15,11 @@ class Reply extends Model
 
     protected $with = [ 'owner', 'favorites' ];
 
+    public function path()
+    {
+        return $this->thread->path();
+    }
+
     public function owner()
     {
         return $this->belongsTo( User::class, 'user_id' );
