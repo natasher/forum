@@ -1782,10 +1782,24 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     if (this.message) {
-      this.body = this.message;
+      this.flash(this.message);
+    }
+
+    window.events.$on('flash', function (message) {
+      _this.flash(message);
+    });
+  },
+  methods: {
+    flash: function flash(message) {
+      this.body = message;
       this.show = true;
+      this.hide();
+    },
+    hide: function hide() {
+      var _this2 = this;
+
       setTimeout(function () {
-        _this.show = false;
+        _this2.show = false;
       }, 3000);
     }
   }
@@ -49650,6 +49664,11 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.events = new Vue();
+
+window.flash = function (message) {
+  window.events.$emit('flash', message);
+};
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -49660,6 +49679,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
 
 Vue.component('flash', __webpack_require__(/*! ./components/FlashComponent.vue */ "./resources/js/components/FlashComponent.vue").default);
 /**
