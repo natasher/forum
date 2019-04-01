@@ -51,4 +51,15 @@ class ParticipateInForum extends TestCase
             ->assertSessionHasErrors( 'body' );
     }
 
+    /** @test */
+    function unauthorized_users_cannot_delete_replies()
+    {
+        $this->withExceptionHandling();
+
+        $reply = create( Reply::class );
+
+        $this->delete( "/replies/{$reply->id}" )
+           ->assertRedirect( 'login' );
+    }
+
 }
