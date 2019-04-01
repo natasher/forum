@@ -1835,7 +1835,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     destroy: function destroy() {
       axios.delete('/replies/' + this.attributes.id);
-      flash('You reply has been deleted.');
+      $(this.$el).fadeOut(300, function () {
+        flash('You reply has been deleted.');
+      });
     }
   }
 });
