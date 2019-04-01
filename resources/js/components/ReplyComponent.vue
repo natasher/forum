@@ -26,10 +26,16 @@
             destroy() {
                 axios.delete( '/replies/' + this.attributes.id );
 
+<<<<<<< HEAD
                 $( this.$el ).fadeOut( 300, () => {
                     flash( 'You reply has been deleted.' );
                 });
 
+=======
+                $( this.$el ).fadeOut( 300 );
+
+                flash( 'You reply has been deleted.' );
+>>>>>>> 743e9fd... remove deleted reply from DOM tree
             },
         },
 

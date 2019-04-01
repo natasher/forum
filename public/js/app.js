@@ -1812,35 +1812,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReplyComponent.vue?vue&type=script&lang=js& ***!
   \*************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'reply',
-  props: ['attributes'],
-  data: function data() {
-    return {
-      editing: false,
-      body: this.attributes.body
-    };
-  },
-  methods: {
-    update: function update() {
-      axios.patch('/replies/' + this.attributes.id, {
-        body: this.body
-      });
-      this.editing = false;
-      flash('Updated!');
-    },
-    destroy: function destroy() {
-      axios.delete('/replies/' + this.attributes.id);
-      $(this.$el).fadeOut(300, function () {
-        flash('You reply has been deleted.');
-      });
-    }
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/artur/forum/resources/js/components/ReplyComponent.vue: Unexpected token (29:0)\n\n\u001b[0m \u001b[90m 27 | \u001b[39m                axios\u001b[33m.\u001b[39m\u001b[36mdelete\u001b[39m( \u001b[32m'/replies/'\u001b[39m \u001b[33m+\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mattributes\u001b[33m.\u001b[39mid )\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 28 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 29 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 30 | \u001b[39m                $( \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39m$el )\u001b[33m.\u001b[39mfadeOut( \u001b[35m300\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 31 | \u001b[39m                    flash( \u001b[32m'You reply has been deleted.'\u001b[39m )\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 32 | \u001b[39m                })\u001b[33m;\u001b[39m\u001b[0m\n    at Parser.raise (/home/artur/forum/node_modules/@babel/parser/lib/index.js:3851:17)\n    at Parser.unexpected (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5165:16)\n    at Parser.parseExprAtom (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6330:20)\n    at Parser.parseExprSubscripts (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5916:23)\n    at Parser.parseMaybeUnary (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5896:21)\n    at Parser.parseExprOps (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5783:23)\n    at Parser.parseMaybeConditional (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5756:23)\n    at Parser.parseMaybeAssign (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5703:21)\n    at Parser.parseExpression (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5651:23)\n    at Parser.parseStatementContent (/home/artur/forum/node_modules/@babel/parser/lib/index.js:7422:23)\n    at Parser.parseStatement (/home/artur/forum/node_modules/@babel/parser/lib/index.js:7293:17)\n    at Parser.parseBlockOrModuleBlockBody (/home/artur/forum/node_modules/@babel/parser/lib/index.js:7879:25)\n    at Parser.parseBlockBody (/home/artur/forum/node_modules/@babel/parser/lib/index.js:7866:10)\n    at Parser.parseBlock (/home/artur/forum/node_modules/@babel/parser/lib/index.js:7850:10)\n    at Parser.parseFunctionBody (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6911:24)\n    at Parser.parseFunctionBodyAndFinish (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6881:10)\n    at Parser.parseMethod (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6837:10)\n    at Parser.parseObjectMethod (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6753:19)\n    at Parser.parseObjPropValue (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6795:23)\n    at Parser.parseObjectMember (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6719:10)\n    at Parser.parseObj (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6643:25)\n    at Parser.parseExprAtom (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6276:21)\n    at Parser.parseExprSubscripts (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5916:23)\n    at Parser.parseMaybeUnary (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5896:21)\n    at Parser.parseExprOps (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5783:23)\n    at Parser.parseMaybeConditional (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5756:23)\n    at Parser.parseMaybeAssign (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5703:21)\n    at Parser.parseObjectProperty (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6770:101)\n    at Parser.parseObjPropValue (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6795:101)\n    at Parser.parseObjectMember (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6719:10)\n    at Parser.parseObj (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6643:25)\n    at Parser.parseExprAtom (/home/artur/forum/node_modules/@babel/parser/lib/index.js:6276:21)\n    at Parser.parseExprSubscripts (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5916:23)\n    at Parser.parseMaybeUnary (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5896:21)\n    at Parser.parseExprOps (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5783:23)\n    at Parser.parseMaybeConditional (/home/artur/forum/node_modules/@babel/parser/lib/index.js:5756:23)");
 
 /***/ }),
 
