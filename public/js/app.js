@@ -1789,6 +1789,8 @@ __webpack_require__.r(__webpack_exports__);
     toggle: function toggle() {
       if (this.isFavorited) {
         axios.delete("/replies/".concat(this.reply.id, "/favorites"));
+        this.isFavorited = false;
+        this.favoritesCount--;
       } else {
         axios.post("/replies/".concat(this.reply.id, "/favorites"));
         this.isFavorited = true;

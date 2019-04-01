@@ -30,6 +30,9 @@
             toggle() {
                 if ( this.isFavorited ) {
                     axios.delete( `/replies/${ this.reply.id }/favorites` );
+
+                    this.isFavorited = false;
+                    this.favoritesCount--;
                 } else {
                     axios.post( `/replies/${ this.reply.id }/favorites` );
 
