@@ -90,4 +90,19 @@ class ParticipateInForum extends TestCase
         $this->assertDatabaseHas( 'replies', [ 'id' => $reply->id, 'body' => $updatedReply ]);
     }
 
+    /** @test */
+    function unauthorized_users_cannot_update_replies()
+    {
+        $this->withExceptionHandling();
+
+        $reply = create( Reply::class );
+
+        $this->patch( "/replies/{$reply->id}" )
+            ->assertRedirect( "login" );
+
+        $this->signIn()
+            ->patch( "/replies/{$reply->id}" )
+            ->assertStatus( 403 );
+    }
+
 }
