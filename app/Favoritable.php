@@ -26,9 +26,8 @@ trait Favoritable
         $this->favorites()
             ->where( $attributes )
             ->get()
-            ->each(function ( $favorite ) {
-                $favorite->delete();
-            });
+            ->each()
+            ->delete();
     }
 
     public function isFavorited()
