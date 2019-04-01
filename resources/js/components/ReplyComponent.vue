@@ -1,7 +1,11 @@
 <script>
+    import favorite from './FavoriteComponent.vue'
+
     export default {
 
         name: 'reply',
+
+        components: { favorite },
 
         props: [ 'attributes' ],
 

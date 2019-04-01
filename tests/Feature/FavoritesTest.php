@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Reply;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -31,6 +32,20 @@ class FavoritesTest extends TestCase
 
         // It should be recorded in the database.
         $this->assertCount( 1, $reply->favorites );
+    }
+
+    /** @test */
+    public function an_authenticated_user_can_unfavorite_any_reply()
+    {
+        $this->signIn();
+
+        $reply = create( Reply::class );
+
+        $reply->favorite();
+
+        $this->delete( 'replies/' . $reply->id . '/favorites' );
+
+        $this->assertCount( 0, $reply->fresh()->favorites );
     }
 
     /** @test */

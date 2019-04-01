@@ -15,6 +15,8 @@ class Reply extends Model
 
     protected $with = [ 'owner', 'favorites' ];
 
+    protected $appends = [ 'favoritesCount', 'isFavorited' ];
+
     public function path()
     {
         return $this->thread->path() . "#reply-{$this->id}";
