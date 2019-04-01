@@ -1844,8 +1844,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _FavoriteComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FavoriteComponent.vue */ "./resources/js/components/FavoriteComponent.vue");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'reply',
+  components: {
+    favorite: _FavoriteComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: ['attributes'],
   data: function data() {
     return {
@@ -49780,7 +49785,6 @@ window.flash = function (message) {
 
 Vue.component('flash', __webpack_require__(/*! ./components/FlashComponent.vue */ "./resources/js/components/FlashComponent.vue").default);
 Vue.component('reply', __webpack_require__(/*! ./components/ReplyComponent.vue */ "./resources/js/components/ReplyComponent.vue").default);
-Vue.component('favorite', __webpack_require__(/*! ./components/FavoriteComponent.vue */ "./resources/js/components/FavoriteComponent.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
