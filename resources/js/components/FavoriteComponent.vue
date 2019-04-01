@@ -1,5 +1,6 @@
 <template>
-    <button type="submit" class="btn btn-default">
+    <button type="submit" class="btn btn-default"
+        @click="toggle">
         <span>like!</span>
         <span v-text="favoritesCount"></span>
     </button>
@@ -14,7 +15,17 @@
 
         data() {
             return {
-                favoritesCount: 0,
+                favoritesCount: this.reply.favoritesCount,
+            }
+        },
+
+        methods: {
+            toggle() {
+                if ( this.isFavorited ) {
+                    axios.delete( `/replies/${ this.reply.id }/favorites` );
+                } else {
+                    axios.post( `/replies/${ this.reply.id }/favorites` );
+                }
             }
         },
 

@@ -1770,13 +1770,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'favorite',
   props: ['reply'],
   data: function data() {
     return {
-      favoritesCount: 0
+      favoritesCount: this.reply.favoritesCount
     };
+  },
+  methods: {
+    toggle: function toggle() {
+      if (this.isFavorited) {
+        axios.delete("/replies/".concat(this.reply.id, "/favorites"));
+      } else {
+        axios.post("/replies/".concat(this.reply.id, "/favorites"));
+      }
+    }
   }
 });
 
@@ -37566,7 +37576,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "button",
-    { staticClass: "btn btn-default", attrs: { type: "submit" } },
+    {
+      staticClass: "btn btn-default",
+      attrs: { type: "submit" },
+      on: { click: _vm.toggle }
+    },
     [
       _c("span", [_vm._v("like!")]),
       _vm._v(" "),
