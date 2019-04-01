@@ -1779,6 +1779,11 @@ __webpack_require__.r(__webpack_exports__);
       favoritesCount: this.reply.favoritesCount
     };
   },
+  computed: {
+    classes: function classes() {
+      return ['btn', this.isFavorited ? 'btn-primary' : 'btn-default'];
+    }
+  },
   methods: {
     toggle: function toggle() {
       if (this.isFavorited) {
@@ -37577,7 +37582,7 @@ var render = function() {
   return _c(
     "button",
     {
-      staticClass: "btn btn-default",
+      class: _vm.classes,
       attrs: { type: "submit" },
       on: { click: _vm.toggle }
     },

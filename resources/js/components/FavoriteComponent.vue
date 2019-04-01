@@ -1,5 +1,5 @@
 <template>
-    <button type="submit" class="btn btn-default"
+    <button type="submit" :class="classes"
         @click="toggle">
         <span>like!</span>
         <span v-text="favoritesCount"></span>
@@ -16,6 +16,12 @@
         data() {
             return {
                 favoritesCount: this.reply.favoritesCount,
+            }
+        },
+
+        computed: {
+            classes() {
+                return [ 'btn', this.isFavorited ? 'btn-primary' : 'btn-default' ];
             }
         },
 
