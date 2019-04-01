@@ -20,12 +20,21 @@
         </div>
 
         <div class="card-body">
-            {{ $reply->body }}
+            <div v-if="editing">
+                <textarea></textarea>
+            </div>
+
+            <div v-else>
+                {{ $reply->body }}
+            </div>
         </div>
 
         @can ( 'update', $reply )
             <div class="card-footer level">
-                <button class="btn btn-xs mr-1">Edit</button>
+                <button class="btn btn-xs mr-1"
+                    @click="editing = true">
+                    Edit
+                </button>
 
                 <form action="/replies/{{ $reply->id }}" method="post">
                     @csrf

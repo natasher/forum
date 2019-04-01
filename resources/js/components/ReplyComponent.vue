@@ -3,5 +3,11 @@
 
         name: 'reply',
 
+        data() {
+            return {
+                editing: false,
+            }
+        }
+
     }
 </script>
