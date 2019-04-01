@@ -1818,9 +1818,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'reply',
+  props: ['attributes'],
   data: function data() {
     return {
-      editing: false
+      editing: false,
+      body: this.attributes.body
     };
   }
 });

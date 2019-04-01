@@ -1,4 +1,4 @@
-<reply inline-template>
+<reply :attributes="{{ $reply }}" inline-template>
     <div id="reply-{{ $reply->id }}" class="card mt-2">
         <div class="card-header">
             <div class="level">
@@ -21,7 +21,9 @@
 
         <div class="card-body">
             <div v-if="editing">
-                <textarea></textarea>
+                <textarea class="form-control"
+                    v-model="body">
+                </textarea>
             </div>
 
             <div v-else>
