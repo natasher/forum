@@ -59,7 +59,11 @@ class ParticipateInForum extends TestCase
         $reply = create( Reply::class );
 
         $this->delete( "/replies/{$reply->id}" )
-           ->assertRedirect( 'login' );
+            ->assertRedirect( 'login' );
+
+        $this->signIn()
+            ->delete( "/replies/{$reply->id}" )
+            ->assertStatus( 403 );
     }
 
 }
