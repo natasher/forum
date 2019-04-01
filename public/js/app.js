@@ -1776,7 +1776,8 @@ __webpack_require__.r(__webpack_exports__);
   props: ['reply'],
   data: function data() {
     return {
-      favoritesCount: this.reply.favoritesCount
+      favoritesCount: this.reply.favoritesCount,
+      isFavorited: true
     };
   },
   computed: {

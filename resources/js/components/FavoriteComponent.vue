@@ -16,6 +16,7 @@
         data() {
             return {
                 favoritesCount: this.reply.favoritesCount,
+                isFavorited   : true,
             }
         },
 
