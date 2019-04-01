@@ -32,6 +32,9 @@
                     axios.delete( `/replies/${ this.reply.id }/favorites` );
                 } else {
                     axios.post( `/replies/${ this.reply.id }/favorites` );
+
+                    this.isFavorited = true;
+                    this.favoritesCount++;
                 }
             }
         },
