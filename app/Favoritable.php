@@ -10,13 +10,20 @@ trait Favoritable
         return $this->morphMany( Favorite::class, 'favorited' );
     }
 
-    public function favorite( $userId )
+    public function favorite()
     {
-        $attributes = [ 'user_id' => $userId ];
+        $attributes = [ 'user_id' => auth()->id() ];
 
         if (! $this->favorites()->where( $attributes )->exists() ) {
             $this->favorites()->create( $attributes );
         }
+    }
+
+    public function unfavorite()
+    {
+        $attributes = [ 'user_id' => auth()->id() ];
+
+        $this->favorites()->where( $attributes )->delete();
     }
 
     public function isFavorited()

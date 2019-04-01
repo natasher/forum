@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Reply;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -44,7 +45,7 @@ class FavoritesTest extends TestCase
         $this->assertCount( 1, $reply->favorites );
 
         $this->delete( 'replies/' . $reply->id . '/favorites' );
-        $this->assertCount( 0, $reply->favorites );
+        $this->assertCount( 0, $reply->fresh()->favorites );
     }
 
     /** @test */
