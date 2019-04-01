@@ -1,4 +1,8 @@
 <template>
+    <button type="submit" class="btn btn-default">
+        <span>like!</span>
+        <span v-text="favoritesCount"></span>
+    </button>
 </template>
 
 <script>
@@ -10,7 +14,7 @@
 
         data() {
             return {
-
+                favoritesCount: 0,
             }
         },
 

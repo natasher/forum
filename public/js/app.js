@@ -1766,11 +1766,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'favorite',
   props: ['reply'],
   data: function data() {
-    return {};
+    return {
+      favoritesCount: 0
+    };
   }
 });
 
@@ -37553,7 +37559,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "button",
+    { staticClass: "btn btn-default", attrs: { type: "submit" } },
+    [
+      _c("span", [_vm._v("like!")]),
+      _vm._v(" "),
+      _c("span", { domProps: { textContent: _vm._s(_vm.favoritesCount) } })
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
