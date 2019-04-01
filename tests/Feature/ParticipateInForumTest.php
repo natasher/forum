@@ -66,4 +66,15 @@ class ParticipateInForum extends TestCase
             ->assertStatus( 403 );
     }
 
+    /** @test */
+    function authorized_users_can_delete_replies()
+    {
+        $this->signIn();
+        $reply = create( Reply::class, [ 'user_id' => auth()->id() ]);
+
+        $this->delete( "/replies/{$reply->id}" );
+
+        $this->assertDatabaseMissing( 'replies', [ 'id' => $reply->id ]);
+    }
+
 }
