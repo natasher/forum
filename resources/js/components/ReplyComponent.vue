@@ -21,7 +21,13 @@
                 this.editing = false;
 
                 flash( 'Updated!' );
-            }
+            },
+
+            destroy() {
+                axios.delete( '/replies/' + this.attributes.id );
+
+                flash( 'You reply has been deleted.' );
+            },
         },
 
     }
