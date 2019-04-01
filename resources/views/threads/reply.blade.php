@@ -37,9 +37,7 @@
                 </button>
             </div>
 
-            <div v-else>
-                {{ $reply->body }}
-            </div>
+            <div v-else v-text="body"></div>
         </div>
 
         @can ( 'update', $reply )
