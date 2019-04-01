@@ -1824,6 +1824,13 @@ __webpack_require__.r(__webpack_exports__);
       editing: false,
       body: this.attributes.body
     };
+  },
+  methods: {
+    update: function update() {
+      axios.patch('/replies/' + this.attributes.id, {
+        body: this.body
+      });
+    }
   }
 });
 
