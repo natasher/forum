@@ -48,7 +48,7 @@
                     Edit
                 </button>
 
-                <button class="btn btn-xs mr-1"
+                <button class="btn btn-xs btn-danger mr-1"
                     @click="destroy">
                     Delete
                 </button>
