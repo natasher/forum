@@ -1831,6 +1831,7 @@ __webpack_require__.r(__webpack_exports__);
         body: this.body
       });
       this.editing = false;
+      flash('Updated!');
     }
   }
 });
