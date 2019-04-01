@@ -1777,25 +1777,30 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       favoritesCount: this.reply.favoritesCount,
-      isFavorited: true
+      isFavorited: this.reply.isFavorited
     };
   },
   computed: {
     classes: function classes() {
       return ['btn', this.isFavorited ? 'btn-primary' : 'btn-default'];
+    },
+    endpoint: function endpoint() {
+      return "/replies/".concat(this.reply.id, "/favorites");
     }
   },
   methods: {
     toggle: function toggle() {
-      if (this.isFavorited) {
-        axios.delete("/replies/".concat(this.reply.id, "/favorites"));
-        this.isFavorited = false;
-        this.favoritesCount--;
-      } else {
-        axios.post("/replies/".concat(this.reply.id, "/favorites"));
-        this.isFavorited = true;
-        this.favoritesCount++;
-      }
+      return this.isFavorited ? this.destory() : this.create();
+    },
+    destory: function destory() {
+      axios.delete(this.endpoint);
+      this.isFavorited = false;
+      this.favoritesCount--;
+    },
+    create: function create() {
+      axios.post(this.endpoint);
+      this.isFavorited = true;
+      this.favoritesCount++;
     }
   }
 });
