@@ -2021,6 +2021,12 @@ __webpack_require__.r(__webpack_exports__);
   name: 'thread-view',
   components: {
     replies: _components_RepliesComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: ['initialRepliesCount'],
+  data: function data() {
+    return {
+      repliesCount: this.initialRepliesCount
+    };
   }
 });
 

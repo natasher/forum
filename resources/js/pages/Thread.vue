@@ -9,5 +9,13 @@
             replies,
         },
 
+        props: [ 'initialRepliesCount' ],
+
+        data() {
+            return {
+                repliesCount: this.initialRepliesCount,
+            }
+        },
+
     }
 </script>
