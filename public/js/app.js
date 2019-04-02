@@ -1900,6 +1900,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     remove: function remove(index) {
       this.items.splice(index, 1);
+      flash('Reply was deleted!');
     }
   }
 });

@@ -38,6 +38,8 @@
         methods: {
             remove( index ) {
                 this.items.splice( index, 1 );
+
+                flash( 'Reply was deleted!' );
             },
         },
 
