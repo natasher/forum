@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div v-for="reply in items" :key="reply.id">
-            <reply :data="reply"></reply>
+        <div v-for="( reply, index ) in items" :key="reply.id">
+            <reply :data="reply" @deleted="remove( index )"></reply>
         </div>
     </div>
 </template>
@@ -36,7 +36,9 @@
         },
 
         methods: {
-
+            remove( index ) {
+                this.items.splice( index, 1 );
+            },
         },
 
     }

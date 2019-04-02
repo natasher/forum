@@ -37,7 +37,7 @@
             <div v-else v-text="body"></div>
         </div>
 
-        <!-- @can ( 'update', $reply )
+        <!-- @can ( 'update', $reply ) -->
             <div class="card-footer level">
 
                 <button class="btn btn-xs mr-1"
@@ -51,7 +51,7 @@
                 </button>
 
             </div>
-        @endcan -->
+        <!-- @endcan -->
 
     </div>
 </template>
@@ -89,10 +89,7 @@
             destroy() {
                 axios.delete( '/replies/' + this.data.id );
 
-                $( this.$el ).fadeOut( 300, () => {
-                    flash( 'You reply has been deleted.' );
-                });
-
+                this.$emit( 'deleted', this.data.id );
             },
         },
 

@@ -1897,7 +1897,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {},
-  methods: {}
+  methods: {
+    remove: function remove(index) {
+      this.items.splice(index, 1);
+    }
+  }
 });
 
 /***/ }),
@@ -1994,9 +1998,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     destroy: function destroy() {
       axios.delete('/replies/' + this.data.id);
-      $(this.$el).fadeOut(300, function () {
-        flash('You reply has been deleted.');
-      });
+      this.$emit('deleted', this.data.id);
     }
   }
 });
@@ -37782,11 +37784,20 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.items, function(reply) {
+    _vm._l(_vm.items, function(reply, index) {
       return _c(
         "div",
         { key: reply.id },
-        [_c("reply", { attrs: { data: reply } })],
+        [
+          _c("reply", {
+            attrs: { data: reply },
+            on: {
+              deleted: function($event) {
+                return _vm.remove(index)
+              }
+            }
+          })
+        ],
         1
       )
     }),
@@ -37880,6 +37891,30 @@ var render = function() {
               )
             ])
           : _c("div", { domProps: { textContent: _vm._s(_vm.body) } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-footer level" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-xs mr-1",
+            on: {
+              click: function($event) {
+                _vm.editing = true
+              }
+            }
+          },
+          [_vm._v("\n                Edit\n            ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-xs btn-danger mr-1",
+            on: { click: _vm.destroy }
+          },
+          [_vm._v("\n                Delete\n            ")]
+        )
       ])
     ]
   )
