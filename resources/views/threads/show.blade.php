@@ -49,12 +49,6 @@
         <div class="col-md-8">
 
             <replies :data="{{ $thread->replies }}"></replies>
-            {{-- @foreach ( $replies as $reply )
-                @include ( 'threads.reply' )
-            @endforeach
-
-            <br>
-            {{ $replies->links() }} --}}
 
         </div>
     </div>
