@@ -37704,7 +37704,12 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.items, function(reply) {
-      return _c("div", { key: reply.id }, [_c("reply")], 1)
+      return _c(
+        "div",
+        { key: reply.id },
+        [_c("reply", { attrs: { data: reply } })],
+        1
+      )
     }),
     0
   )

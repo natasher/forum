@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="reply in items" :key="reply.id">
-            <reply></reply>
+            <reply :data="reply"></reply>
         </div>
     </div>
 </template>
