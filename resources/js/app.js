@@ -27,7 +27,8 @@ window.flash  = function ( message ) {
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component( 'flash', require( './components/FlashComponent.vue' ).default );
-Vue.component( 'reply', require( './components/ReplyComponent.vue' ).default );
+// Vue.component( 'reply', require( './components/ReplyComponent.vue' ).default );
+Vue.component( 'replies', require( './components/RepliesComponent.vue' ).default );
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

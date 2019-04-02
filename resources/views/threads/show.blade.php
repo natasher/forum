@@ -48,12 +48,13 @@
     <div class="row mt-4">
         <div class="col-md-8">
 
-            @foreach ( $replies as $reply )
+            <replies :data="{{ $thread->replies }}"></replies>
+            {{-- @foreach ( $replies as $reply )
                 @include ( 'threads.reply' )
             @endforeach
 
             <br>
-            {{ $replies->links() }}
+            {{ $replies->links() }} --}}
 
         </div>
     </div>
