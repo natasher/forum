@@ -1,7 +1,7 @@
 <script>
     export default {
 
-        name: 'thread',
+        name: 'thread-view',
 
     }
 </script>
