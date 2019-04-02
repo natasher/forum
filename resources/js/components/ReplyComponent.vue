@@ -1,18 +1,18 @@
 <template>
-    <div id="reply-{{ $reply->id }}" class="card mt-2">
+    <div :id="`reply-${ id }`" class="card mt-2">
         <div class="card-header">
             <div class="level">
                 <h5 class="flex">
-                    <a href="{{ route( 'profile' , $reply->owner ) }}">
-                        {{ $reply->owner->name }}
-                    </a> said {{ $reply->created_at->diffForHumans() }}...
+                    <a :href="`/profiles/${ data.owner.name }`"
+                        v-text="data.owner.name">
+                    </a> said {{ data.created_at }}...
                 </h5>
 
-                @if ( Auth::check() )
+                <!-- @if ( Auth::check() )
                     <div>
-                        <favorite :reply="{{ $reply }}"></favorite>
+                        <favorite :reply="data"></favorite>
                     </div>
-                @endif
+                @endif -->
             </div>
         </div>
 
@@ -37,7 +37,7 @@
             <div v-else v-text="body"></div>
         </div>
 
-        @can ( 'update', $reply )
+        <!-- @can ( 'update', $reply )
             <div class="card-footer level">
 
                 <button class="btn btn-xs mr-1"
@@ -51,7 +51,7 @@
                 </button>
 
             </div>
-        @endcan
+        @endcan -->
 
     </div>
 </template>
@@ -69,6 +69,7 @@
 
         data() {
             return {
+                id: this.data.id,
                 editing: false,
                 body   : this.data.body
             }

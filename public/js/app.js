@@ -1979,6 +1979,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['data'],
   data: function data() {
     return {
+      id: this.data.id,
       editing: false,
       body: this.data.body
     };
@@ -37810,8 +37811,81 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "card mt-2", attrs: { id: "reply-" + _vm.id } },
+    [
+      _c("div", { staticClass: "card-header" }, [
+        _c("div", { staticClass: "level" }, [
+          _c("h5", { staticClass: "flex" }, [
+            _c("a", {
+              attrs: { href: "/profiles/" + _vm.data.owner.name },
+              domProps: { textContent: _vm._s(_vm.data.owner.name) }
+            }),
+            _vm._v(" said " + _vm._s(_vm.data.created_at) + "...\n            ")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _vm.editing
+          ? _c("div", [
+              _c("div", { staticClass: "form-group" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.body,
+                      expression: "body"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  domProps: { value: _vm.body },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.body = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-primary",
+                  on: { click: _vm.update }
+                },
+                [_vm._v("\n                Update\n            ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-link",
+                  on: {
+                    click: function($event) {
+                      _vm.editing = false
+                    }
+                  }
+                },
+                [_vm._v("\n                Cancel\n            ")]
+              )
+            ])
+          : _c("div", { domProps: { textContent: _vm._s(_vm.body) } })
+      ])
+    ]
+  )
+}
 var staticRenderFns = []
+render._withStripped = true
 
 
 
