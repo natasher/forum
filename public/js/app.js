@@ -1918,23 +1918,23 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     favorite: _FavoriteComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: ['attributes'],
+  props: ['data'],
   data: function data() {
     return {
       editing: false,
-      body: this.attributes.body
+      body: this.data.body
     };
   },
   methods: {
     update: function update() {
-      axios.patch('/replies/' + this.attributes.id, {
+      axios.patch('/replies/' + this.data.id, {
         body: this.body
       });
       this.editing = false;
       flash('Updated!');
     },
     destroy: function destroy() {
-      axios.delete('/replies/' + this.attributes.id);
+      axios.delete('/replies/' + this.data.id);
       $(this.$el).fadeOut(300, function () {
         flash('You reply has been deleted.');
       });
