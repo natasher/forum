@@ -1953,8 +1953,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_RepliesComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/RepliesComponent.vue */ "./resources/js/components/RepliesComponent.vue");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'thread-view'
+  name: 'thread-view',
+  components: {
+    replies: _components_RepliesComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
 });
 
 /***/ }),
@@ -49905,8 +49910,8 @@ window.flash = function (message) {
 
 
 Vue.component('flash', __webpack_require__(/*! ./components/FlashComponent.vue */ "./resources/js/components/FlashComponent.vue").default); // Vue.component( 'reply', require( './components/ReplyComponent.vue' ).default );
+// Vue.component( 'replies', require( './components/RepliesComponent.vue' ).default );
 
-Vue.component('replies', __webpack_require__(/*! ./components/RepliesComponent.vue */ "./resources/js/components/RepliesComponent.vue").default);
 Vue.component('thread-view', __webpack_require__(/*! ./pages/Thread.vue */ "./resources/js/pages/Thread.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
