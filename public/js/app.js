@@ -1824,6 +1824,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     data: {
       type: Object,
+      required: true,
       default: {}
     }
   },

@@ -8,8 +8,9 @@
 
         props: {
             data: {
-                type: Object,
-                default: {},
+                type    : Object,
+                required: true,
+                default : {},
             },
         },
 
