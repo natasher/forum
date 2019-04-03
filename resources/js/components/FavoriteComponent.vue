@@ -33,15 +33,15 @@
         methods: {
             toggle() {
                 return ( this.isFavorited )
-                        ? this.destory()
+                        ? this.destroy()
                         : this.create();
             },
 
-            destory() {
-                    axios.delete( this.endpoint );
+            destroy() {
+                axios.delete( this.endpoint );
 
-                    this.isFavorited = false;
-                    this.favoritesCount--;
+                this.isFavorited = false;
+                this.favoritesCount--;
             },
 
             create() {
