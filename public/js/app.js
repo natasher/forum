@@ -1972,8 +1972,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'reply',
@@ -1991,6 +1989,9 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     signedIn: function signedIn() {
       return window.App.signedIn;
+    },
+    canUpdate: function canUpdate() {
+      return this.data.user_id == window.App.user.id;
     }
   },
   methods: {
@@ -37908,29 +37909,31 @@ var render = function() {
           : _c("div", { domProps: { textContent: _vm._s(_vm.body) } })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "card-footer level" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-xs mr-1",
-            on: {
-              click: function($event) {
-                _vm.editing = true
-              }
-            }
-          },
-          [_vm._v("\n                Edit\n            ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-xs btn-danger mr-1",
-            on: { click: _vm.destroy }
-          },
-          [_vm._v("\n                Delete\n            ")]
-        )
-      ])
+      _vm.canUpdate
+        ? _c("div", { staticClass: "card-footer level" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-xs mr-1",
+                on: {
+                  click: function($event) {
+                    _vm.editing = true
+                  }
+                }
+              },
+              [_vm._v("\n            Edit\n        ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-xs btn-danger mr-1",
+                on: { click: _vm.destroy }
+              },
+              [_vm._v("\n            Delete\n        ")]
+            )
+          ])
+        : _vm._e()
     ]
   )
 }
