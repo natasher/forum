@@ -9,6 +9,7 @@
                         name="body"
                         id="body"
                         class="form-control"
+                        v-model="body"
                         placeholder="Have something to say?">
                     </textarea>
                 </div>
@@ -31,6 +32,12 @@
     export default {
 
         name: 'new-reply',
+
+        data() {
+            return {
+                body: '',
+            }
+        },
 
     }
 </script>
