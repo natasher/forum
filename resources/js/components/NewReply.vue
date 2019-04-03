@@ -10,11 +10,17 @@
                         id="body"
                         class="form-control"
                         v-model="body"
+                        required
                         placeholder="Have something to say?">
                     </textarea>
                 </div>
 
-                <button type="submit" class="btn btn-default">Post</button>
+                <button
+                    type="submit"
+                    @click="addReply"
+                    class="btn btn-default">
+                        Post
+                </button>
 
             </div>
         </div>
@@ -37,6 +43,21 @@
             return {
                 body: '',
             }
+        },
+
+        methods: {
+
+            addReply() {
+                axios.post( this.endpoint, { body: this.body })
+                    .then( ({ data }) => {
+                        this.body = '';
+
+                        flash( 'Your reply has been posted.' );
+
+                        this.$emit( 'created', data );
+                    })
+            },
+
         },
 
     }
