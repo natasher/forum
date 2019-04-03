@@ -1991,7 +1991,11 @@ __webpack_require__.r(__webpack_exports__);
       return window.App.signedIn;
     },
     canUpdate: function canUpdate() {
-      return this.data.user_id == window.App.user.id;
+      var _this = this;
+
+      return this.authorize(function (user) {
+        return _this.data.user_id == user.id;
+      });
     }
   },
   methods: {
@@ -50095,6 +50099,11 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+window.Vue.prototype.authorize = function (handler) {
+  return handler(window.App.user);
+};
+
 window.events = new Vue();
 
 window.flash = function (message) {

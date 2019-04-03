@@ -9,6 +9,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+window.Vue.prototype.authorize = function ( handler ) {
+    return handler( window.App.user );
+}
+
 window.events = new Vue();
 window.flash  = function ( message ) {
     window.events.$emit( 'flash', message );
