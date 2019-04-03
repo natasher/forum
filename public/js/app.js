@@ -50101,7 +50101,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 window.Vue.prototype.authorize = function (handler) {
-  return handler(window.App.user);
+  var user = window.App.user;
+  if (!user) return false;
+  return handler(user);
 };
 
 window.events = new Vue();
