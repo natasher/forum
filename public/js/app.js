@@ -1988,6 +1988,11 @@ __webpack_require__.r(__webpack_exports__);
       body: this.data.body
     };
   },
+  computed: {
+    signedIn: function signedIn() {
+      return window.App.signedIn;
+    }
+  },
   methods: {
     update: function update() {
       axios.patch('/replies/' + this.data.id, {
@@ -37846,7 +37851,9 @@ var render = function() {
             _vm._v(" said " + _vm._s(_vm.data.created_at) + "...\n            ")
           ]),
           _vm._v(" "),
-          _c("div", [_c("favorite", { attrs: { reply: _vm.data } })], 1)
+          _vm.signedIn
+            ? _c("div", [_c("favorite", { attrs: { reply: _vm.data } })], 1)
+            : _vm._e()
         ])
       ]),
       _vm._v(" "),
