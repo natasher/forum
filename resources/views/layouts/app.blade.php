@@ -6,6 +6,13 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type="text/javascript">
+        window.App = {!!
+            json_encode([
+                'signedIn' => Auth::check(),
+            ])
+        !!};
+    </script>
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 

@@ -8,11 +8,9 @@
                     </a> said {{ data.created_at }}...
                 </h5>
 
-                <!-- @if ( Auth::check() )
-                    <div>
-                        <favorite :reply="data"></favorite>
-                    </div>
-                @endif -->
+                <div>
+                    <favorite :reply="data"></favorite>
+                </div>
             </div>
         </div>
 
