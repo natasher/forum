@@ -50102,8 +50102,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 window.Vue.prototype.authorize = function (handler) {
   var user = window.App.user;
-  if (!user) return false;
-  return handler(user);
+  return user ? handler(user) : false;
 };
 
 window.events = new Vue();
