@@ -1,29 +1,23 @@
 <template>
     <div>
-    <!-- @if ( auth()->check() ) -->
-        <div class="row mt-4">
-            <div class="col-md-8">
-
-                <div class="form-group">
-                    <textarea
-                        name="body"
-                        id="body"
-                        class="form-control"
-                        v-model="body"
-                        required
-                        placeholder="Have something to say?">
-                    </textarea>
-                </div>
-
-                <button
-                    type="submit"
-                    @click="addReply"
-                    class="btn btn-default">
-                        Post
-                </button>
-
-            </div>
+        <div class="form-group">
+            <textarea
+                name="body"
+                id="body"
+                class="form-control"
+                v-model="body"
+                required
+                placeholder="Have something to say?">
+            </textarea>
         </div>
+
+        <button
+            type="submit"
+            @click="addReply"
+            class="btn btn-default">
+                Post
+        </button>
+
     <!-- @else -->
         <!-- <div class="row mt-4">
             <div class="col-md-8">
@@ -42,6 +36,7 @@
         data() {
             return {
                 body: '',
+                endpoint: '',
             }
         },
 

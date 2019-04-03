@@ -48,13 +48,7 @@
 
         </div>
 
-        <div class="row mt-4">
-            <div class="col-md-8">
-
-                <replies :data="{{ $thread->replies }}" @removed="repliesCount--"></replies>
-
-            </div>
-        </div>
+        <replies :data="{{ $thread->replies }}" @removed="repliesCount--"></replies>
 
     </div>
 </thread-view>

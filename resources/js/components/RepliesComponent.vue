@@ -1,13 +1,24 @@
 <template>
     <div>
-        <div v-for="( reply, index ) in items" :key="reply.id">
-            <reply :data="reply" @deleted="remove( index )"></reply>
+        <div class="row mt-4">
+            <div class="col-md-8"
+                v-for="( reply, index ) in items"
+                :key="reply.id">
+                <reply :data="reply" @deleted="remove( index )"></reply>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-8">
+                <new-reply />
+            </div>
         </div>
     </div>
 </template>
 
 <script>
     import reply from './ReplyComponent.vue'
+    import NewReply from './NewReply.vue'
 
     export default {
 
@@ -15,6 +26,7 @@
 
         components: {
             reply,
+            NewReply,
         },
 
         props: {
