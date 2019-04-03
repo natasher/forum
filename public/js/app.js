@@ -1790,9 +1790,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     toggle: function toggle() {
-      return this.isFavorited ? this.destory() : this.create();
+      return this.isFavorited ? this.destroy() : this.create();
     },
-    destory: function destory() {
+    destroy: function destroy() {
       axios.delete(this.endpoint);
       this.isFavorited = false;
       this.favoritesCount--;
@@ -1918,8 +1918,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FavoriteComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FavoriteComponent.vue */ "./resources/js/components/FavoriteComponent.vue");
-//
-//
 //
 //
 //
@@ -37846,7 +37844,9 @@ var render = function() {
               domProps: { textContent: _vm._s(_vm.data.owner.name) }
             }),
             _vm._v(" said " + _vm._s(_vm.data.created_at) + "...\n            ")
-          ])
+          ]),
+          _vm._v(" "),
+          _c("div", [_c("favorite", { attrs: { reply: _vm.data } })], 1)
         ])
       ]),
       _vm._v(" "),

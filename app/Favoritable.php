@@ -35,7 +35,7 @@ trait Favoritable
         $this->favorites()
             ->where( $attributes )
             ->get()
-            ->each()
+            ->each
             ->delete();
     }
 
