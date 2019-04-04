@@ -48,7 +48,10 @@
 
         </div>
 
-        <replies :data="{{ $thread->replies }}" @removed="repliesCount--"></replies>
+        <replies
+            :data="{{ $thread->replies }}"
+            @removed="repliesCount--"
+            @added="repliesCount++" />
 
     </div>
 </thread-view>

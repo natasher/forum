@@ -1989,6 +1989,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     add: function add(reply) {
       this.items.push(reply);
+      this.$emit('added');
     },
     remove: function remove(index) {
       this.items.splice(index, 1);
