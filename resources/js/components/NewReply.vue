@@ -44,8 +44,7 @@
 
             addReply() {
                 axios.post( this.endpoint, { body: this.body })
-                    .then( (data) => {
-                        console.log( data );
+                    .then( ({ data }) => {
                         this.body = '';
 
                         flash( 'Your reply has been posted.' );

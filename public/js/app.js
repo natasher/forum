@@ -1913,8 +1913,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post(this.endpoint, {
         body: this.body
-      }).then(function (data) {
-        console.log(data);
+      }).then(function (_ref) {
+        var data = _ref.data;
         _this.body = '';
         flash('Your reply has been posted.');
 
