@@ -11,7 +11,7 @@
         <div class="row mt-4">
             <div class="col-md-8">
                 <new-reply
-                    endpoint="/threads/dolor/16/replies"
+                    :endpoint="endpoint"
                     @created="add" />
             </div>
         </div>
@@ -41,7 +41,8 @@
 
         data() {
             return {
-                items: this.data,
+                items   : this.data,
+                endpoint: `${ location.pathname }/replies`,
             }
         },
 

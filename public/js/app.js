@@ -1981,7 +1981,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      items: this.data
+      items: this.data,
+      endpoint: "".concat(location.pathname, "/replies")
     };
   },
   computed: {},
@@ -37997,7 +37998,7 @@ var render = function() {
         { staticClass: "col-md-8" },
         [
           _c("new-reply", {
-            attrs: { endpoint: "/threads/dolor/16/replies" },
+            attrs: { endpoint: _vm.endpoint },
             on: { created: _vm.add }
           })
         ],
