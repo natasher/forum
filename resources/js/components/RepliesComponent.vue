@@ -10,7 +10,7 @@
 
         <div class="row mt-4">
             <div class="col-md-8">
-                <new-reply />
+                <new-reply @created="add" />
             </div>
         </div>
     </div>
@@ -48,6 +48,10 @@
         },
 
         methods: {
+            add( reply ) {
+                this.items.push( reply );
+            },
+
             remove( index ) {
                 this.items.splice( index, 1 );
 

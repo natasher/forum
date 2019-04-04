@@ -36,7 +36,7 @@
         data() {
             return {
                 body: '',
-                endpoint: '',
+                endpoint: '/threads/dolor/16/replies',
             }
         },
 
@@ -44,7 +44,8 @@
 
             addReply() {
                 axios.post( this.endpoint, { body: this.body })
-                    .then( ({ data }) => {
+                    .then( (data) => {
+                        console.log( data );
                         this.body = '';
 
                         flash( 'Your reply has been posted.' );

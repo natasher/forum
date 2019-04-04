@@ -1904,7 +1904,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       body: '',
-      endpoint: ''
+      endpoint: '/threads/dolor/16/replies'
     };
   },
   methods: {
@@ -1913,8 +1913,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post(this.endpoint, {
         body: this.body
-      }).then(function (_ref) {
-        var data = _ref.data;
+      }).then(function (data) {
+        console.log(data);
         _this.body = '';
         flash('Your reply has been posted.');
 
@@ -1977,6 +1977,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {},
   methods: {
+    add: function add(reply) {
+      this.items.push(reply);
+    },
     remove: function remove(index) {
       this.items.splice(index, 1);
       this.$emit('removed');
@@ -37965,7 +37968,12 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "row mt-4" }, [
-      _c("div", { staticClass: "col-md-8" }, [_c("new-reply")], 1)
+      _c(
+        "div",
+        { staticClass: "col-md-8" },
+        [_c("new-reply", { on: { created: _vm.add } })],
+        1
+      )
     ])
   ])
 }
