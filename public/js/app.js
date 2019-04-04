@@ -1903,10 +1903,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'new-reply',
+  props: ['endpoint'],
   data: function data() {
     return {
-      body: '',
-      endpoint: '/threads/dolor/16/replies'
+      body: ''
     };
   },
   computed: {
@@ -1944,6 +1944,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ReplyComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReplyComponent.vue */ "./resources/js/components/ReplyComponent.vue");
 /* harmony import */ var _NewReply_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewReply.vue */ "./resources/js/components/NewReply.vue");
+//
+//
 //
 //
 //
@@ -37993,7 +37995,12 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-md-8" },
-        [_c("new-reply", { on: { created: _vm.add } })],
+        [
+          _c("new-reply", {
+            attrs: { endpoint: "/threads/dolor/16/replies" },
+            on: { created: _vm.add }
+          })
+        ],
         1
       )
     ])

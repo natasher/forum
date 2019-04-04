@@ -35,10 +35,11 @@
 
         name: 'new-reply',
 
+        props: [ 'endpoint' ],
+
         data() {
             return {
                 body: '',
-                endpoint: '/threads/dolor/16/replies',
             }
         },
 

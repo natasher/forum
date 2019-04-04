@@ -10,7 +10,9 @@
 
         <div class="row mt-4">
             <div class="col-md-8">
-                <new-reply @created="add" />
+                <new-reply
+                    endpoint="/threads/dolor/16/replies"
+                    @created="add" />
             </div>
         </div>
     </div>
