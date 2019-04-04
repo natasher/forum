@@ -1899,6 +1899,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'new-reply',
   data: function data() {
@@ -1906,6 +1908,11 @@ __webpack_require__.r(__webpack_exports__);
       body: '',
       endpoint: '/threads/dolor/16/replies'
     };
+  },
+  computed: {
+    signedIn: function signedIn() {
+      return window.App.signedIn;
+    }
   },
   methods: {
     addReply: function addReply() {
@@ -37881,47 +37888,62 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "form-group" }, [
-      _c("textarea", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.body,
-            expression: "body"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: {
-          name: "body",
-          id: "body",
-          required: "",
-          placeholder: "Have something to say?"
-        },
-        domProps: { value: _vm.body },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.body = $event.target.value
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-default",
-        attrs: { type: "submit" },
-        on: { click: _vm.addReply }
-      },
-      [_vm._v("\n            Post\n    ")]
-    )
+    _vm.signedIn
+      ? _c("div", [
+          _c("div", { staticClass: "form-group" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.body,
+                  expression: "body"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "body",
+                id: "body",
+                required: "",
+                placeholder: "Have something to say?"
+              },
+              domProps: { value: _vm.body },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.body = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-default",
+              attrs: { type: "submit" },
+              on: { click: _vm.addReply }
+            },
+            [_vm._v("\n                Post\n        ")]
+          )
+        ])
+      : _c("div", { staticClass: "row mt-4" }, [_vm._m(0)])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _vm._v("\n            You need to "),
+      _c("a", { attrs: { href: "/login" } }, [_vm._v("log in")]),
+      _vm._v(" to comment a thread.\n        ")
+    ])
+  }
+]
 render._withStripped = true
 
 
