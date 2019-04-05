@@ -31,17 +31,9 @@
             NewReply,
         },
 
-        props: {
-            data: {
-                type    : Array,
-                required: true,
-                default : {},
-            },
-        },
-
         data() {
             return {
-                items   : this.data,
+                items   : [],
                 endpoint: `${ location.pathname }/replies`,
             }
         },

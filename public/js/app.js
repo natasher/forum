@@ -1972,16 +1972,9 @@ __webpack_require__.r(__webpack_exports__);
     reply: _ReplyComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     NewReply: _NewReply_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  props: {
-    data: {
-      type: Array,
-      required: true,
-      default: {}
-    }
-  },
   data: function data() {
     return {
-      items: this.data,
+      items: [],
       endpoint: "".concat(location.pathname, "/replies")
     };
   },
