@@ -2094,7 +2094,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     ago: function ago() {
-      return moment__WEBPACK_IMPORTED_MODULE_1__(this.data.created_at).fromNow();
+      return moment__WEBPACK_IMPORTED_MODULE_1__(this.data.created_at).fromNow() + '...';
     }
   },
   methods: {
