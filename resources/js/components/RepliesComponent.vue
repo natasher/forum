@@ -38,11 +38,24 @@
             }
         },
 
+        created() {
+            this.fetch();
+        },
+
         computed: {
 
         },
 
         methods: {
+            fetch() {
+                axios.get( this.url )
+                    .then( this.refresh );
+            },
+
+            refresh( response ) {
+
+            },
+
             add( reply ) {
                 this.items.push( reply );
 
