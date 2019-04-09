@@ -1965,6 +1965,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -55609,6 +55611,8 @@ var render = function() {
         "div",
         { staticClass: "col-md-8" },
         [
+          _c("paginator"),
+          _vm._v(" "),
           _c("new-reply", {
             attrs: { endpoint: _vm.url },
             on: { created: _vm.add }

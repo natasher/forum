@@ -10,6 +10,8 @@
 
         <div class="row mt-4">
             <div class="col-md-8">
+                <paginator></paginator>
+
                 <new-reply
                     :endpoint="url"
                     @created="add" />
