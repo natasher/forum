@@ -1944,6 +1944,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ReplyComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReplyComponent.vue */ "./resources/js/components/ReplyComponent.vue");
 /* harmony import */ var _NewReply_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewReply.vue */ "./resources/js/components/NewReply.vue");
+/* harmony import */ var _mixins_collection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/collection.js */ "./resources/js/mixins/collection.js");
 //
 //
 //
@@ -1964,6 +1965,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1972,10 +1974,9 @@ __webpack_require__.r(__webpack_exports__);
     reply: _ReplyComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     NewReply: _NewReply_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  mixins: [_mixins_collection_js__WEBPACK_IMPORTED_MODULE_2__["default"]],
   data: function data() {
     return {
-      items: [],
-      endpoint: "".concat(location.pathname, "/replies"),
       dataSet: false
     };
   },
@@ -1994,15 +1995,6 @@ __webpack_require__.r(__webpack_exports__);
       var data = _ref.data;
       this.dataSet = data;
       this.items = data.data;
-    },
-    add: function add(reply) {
-      this.items.push(reply);
-      this.$emit('added');
-    },
-    remove: function remove(index) {
-      this.items.splice(index, 1);
-      this.$emit('removed');
-      flash('Reply was deleted!');
     }
   }
 });
@@ -55618,7 +55610,7 @@ var render = function() {
         { staticClass: "col-md-8" },
         [
           _c("new-reply", {
-            attrs: { endpoint: _vm.endpoint },
+            attrs: { endpoint: _vm.url },
             on: { created: _vm.add }
           })
         ],
@@ -68365,6 +68357,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReplyComponent_vue_vue_type_template_id_72276ade___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/mixins/collection.js":
+/*!*******************************************!*\
+  !*** ./resources/js/mixins/collection.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      items: []
+    };
+  },
+  methods: {
+    add: function add(item) {
+      this.items.push(item);
+      this.$emit('added');
+    },
+    remove: function remove(index) {
+      this.items.splice(index, 1);
+      this.$emit('removed');
+      flash('Reply was deleted!');
+    }
+  }
+});
 
 /***/ }),
 
