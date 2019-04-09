@@ -43,12 +43,22 @@
                 this.prevUrl = this.dataSet.prev_page_url;
                 this.nextUrl = this.dataSet.next_page_url;
             },
+
+            page() {
+                this.broadcast();
+            },
         },
 
         computed: {
             shouldPaginate() {
                 return !!this.prevUrl || !!this.nextUrl;
             }
+        },
+
+        methods: {
+            broadcast() {
+                this.$emit( 'updated', this.page );
+            },
         },
 
     }

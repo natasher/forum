@@ -2027,6 +2027,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2049,11 +2051,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {},
   methods: {
-    fetch: function fetch() {
-      axios.get(this.url()).then(this.refresh);
+    fetch: function fetch(page) {
+      axios.get(this.url(page)).then(this.refresh);
     },
     url: function url() {
-      return "".concat(location.pathname, "/replies");
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      return "".concat(location.pathname, "/replies?=") + page;
     },
     refresh: function refresh(_ref) {
       var data = _ref.data;
@@ -55770,7 +55773,10 @@ var render = function() {
         "div",
         { staticClass: "col-md-8" },
         [
-          _c("paginator", { attrs: { dataSet: _vm.dataSet } }),
+          _c("paginator", {
+            attrs: { dataSet: _vm.dataSet },
+            on: { updated: _vm.fetch }
+          }),
           _vm._v(" "),
           _c("new-reply", {
             attrs: { endpoint: _vm.url },

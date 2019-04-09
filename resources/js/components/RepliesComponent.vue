@@ -10,7 +10,9 @@
 
         <div class="row mt-4">
             <div class="col-md-8">
-                <paginator :dataSet="dataSet"></paginator>
+                <paginator
+                    :dataSet="dataSet"
+                    @updated="fetch" />
 
                 <new-reply
                     :endpoint="url"
@@ -55,13 +57,13 @@
         },
 
         methods: {
-            fetch() {
-                axios.get( this.url() )
+            fetch( page ) {
+                axios.get( this.url( page ) )
                     .then( this.refresh );
             },
 
-            url() {
-                return `${ location.pathname }/replies`;
+            url( page = 1 ) {
+                return `${ location.pathname }/replies?=` + page;
             },
 
             refresh({ data }) {
