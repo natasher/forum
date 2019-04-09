@@ -11,7 +11,7 @@
         <div class="row mt-4">
             <div class="col-md-8">
                 <new-reply
-                    :endpoint="endpoint"
+                    :endpoint="url"
                     @created="add" />
             </div>
         </div>
@@ -21,6 +21,7 @@
 <script>
     import reply from './ReplyComponent.vue'
     import NewReply from './NewReply.vue'
+    import collection from '../mixins/collection.js'
 
     export default {
 
@@ -31,10 +32,12 @@
             NewReply,
         },
 
+        mixins: [
+            collection
+        ],
+
         data() {
             return {
-                items   : [],
-                endpoint: `${ location.pathname }/replies`,
                 dataSet : false,
             }
         },
@@ -60,20 +63,6 @@
             refresh({ data }) {
                 this.dataSet = data;
                 this.items   = data.data;
-            },
-
-            add( reply ) {
-                this.items.push( reply );
-
-                this.$emit( 'added' );
-            },
-
-            remove( index ) {
-                this.items.splice( index, 1 );
-
-                this.$emit( 'removed' );
-
-                flash( 'Reply was deleted!' );
             },
         },
 
