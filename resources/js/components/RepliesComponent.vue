@@ -35,6 +35,7 @@
             return {
                 items   : [],
                 endpoint: `${ location.pathname }/replies`,
+                dataSet : false,
             }
         },
 
@@ -48,12 +49,17 @@
 
         methods: {
             fetch() {
-                axios.get( this.url )
+                axios.get( this.url() )
                     .then( this.refresh );
             },
 
-            refresh( response ) {
+            url() {
+                return `${ location.pathname }/replies`;
+            },
 
+            refresh({ data }) {
+                this.dataSet = data;
+                this.items   = data.data;
             },
 
             add( reply ) {

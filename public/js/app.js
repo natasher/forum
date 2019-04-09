@@ -1975,7 +1975,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       items: [],
-      endpoint: "".concat(location.pathname, "/replies")
+      endpoint: "".concat(location.pathname, "/replies"),
+      dataSet: false
     };
   },
   created: function created() {
@@ -1984,9 +1985,16 @@ __webpack_require__.r(__webpack_exports__);
   computed: {},
   methods: {
     fetch: function fetch() {
-      axios.get(this.url).then(this.refresh);
+      axios.get(this.url()).then(this.refresh);
     },
-    refresh: function refresh(response) {},
+    url: function url() {
+      return "".concat(location.pathname, "/replies");
+    },
+    refresh: function refresh(_ref) {
+      var data = _ref.data;
+      this.dataSet = data;
+      this.items = data.data;
+    },
     add: function add(reply) {
       this.items.push(reply);
       this.$emit('added');
