@@ -1964,6 +1964,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'paginator',
+  props: ['dataSet'],
   data: function data() {
     return {
       page: 1,
@@ -1971,9 +1972,16 @@ __webpack_require__.r(__webpack_exports__);
       nextUrl: false
     };
   },
+  watch: {
+    dataSet: function dataSet() {
+      this.page = this.dataSet.current_page;
+      this.prevUrl = this.dataSet.prev_page_url;
+      this.nextUrl = this.dataSet.next_page_url;
+    }
+  },
   computed: {
     shouldPaginate: function shouldPaginate() {
-      return this.prevUrl || this.nextUrl;
+      return !!this.prevUrl || !!this.nextUrl;
     }
   }
 });
@@ -55746,7 +55754,7 @@ var render = function() {
         "div",
         { staticClass: "col-md-8" },
         [
-          _c("paginator"),
+          _c("paginator", { attrs: { dataSet: _vm.dataSet } }),
           _vm._v(" "),
           _c("new-reply", {
             attrs: { endpoint: _vm.url },

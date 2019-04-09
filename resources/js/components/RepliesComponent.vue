@@ -10,7 +10,7 @@
 
         <div class="row mt-4">
             <div class="col-md-8">
-                <paginator></paginator>
+                <paginator :dataSet="dataSet"></paginator>
 
                 <new-reply
                     :endpoint="url"
