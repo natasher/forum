@@ -21,8 +21,9 @@
 </template>
 
 <script>
-    import reply from './ReplyComponent.vue'
-    import NewReply from './NewReply.vue'
+    import reply      from './ReplyComponent.vue'
+    import NewReply   from './NewReply.vue'
+    import paginator  from './Paginator.vue'
     import collection from '../mixins/collection.js'
 
     export default {
@@ -32,6 +33,7 @@
         components: {
             reply,
             NewReply,
+            paginator,
         },
 
         mixins: [
