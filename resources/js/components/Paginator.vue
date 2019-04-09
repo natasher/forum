@@ -1,18 +1,20 @@
 <template>
-    <ul class="pagination">
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
+    <ul class="pagination" v-if="shouldPaginate">
+
+        <li class="page-item" v-show="prevUrl">
+            <a class="page-link" href="#" aria-label="Previous" rel="prev">
+                <span aria-hidden="true">&laquo; Previous</span>
             </a>
         </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
+        <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+        <li class="page-item" v-show="nextUrl">
+            <a class="page-link" href="#" aria-label="Next" rel="next">
+                <span aria-hidden="true">Next &raquo;</span>
             </a>
         </li>
+
     </ul>
 </template>
 
@@ -20,6 +22,20 @@
     export default {
 
         name: 'paginator',
+
+        data() {
+            return {
+                page: 1,
+                prevUrl: false,
+                nextUrl: false,
+            }
+        },
+
+        computed: {
+            shouldPaginate() {
+                return this.prevUrl || this.nextUrl;
+            }
+        },
 
     }
 </script>
