@@ -1981,7 +1981,7 @@ __webpack_require__.r(__webpack_exports__);
       this.nextUrl = this.dataSet.next_page_url;
     },
     page: function page() {
-      this.broadcast();
+      this.broadcast().updateUrl();
     }
   },
   computed: {
@@ -1992,6 +1992,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     broadcast: function broadcast() {
       this.$emit('updated', this.page);
+      return this;
+    },
+    updateUrl: function updateUrl() {
+      history.pushState(null, null, "?page=".concat(this.page));
     }
   }
 });
