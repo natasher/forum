@@ -1962,6 +1962,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'paginator',
   props: ['dataSet'],
@@ -55653,7 +55657,13 @@ var render = function() {
                 expression: "prevUrl"
               }
             ],
-            staticClass: "page-item"
+            staticClass: "page-item",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.page--
+              }
+            }
           },
           [_vm._m(0)]
         ),
@@ -55669,7 +55679,13 @@ var render = function() {
                 expression: "nextUrl"
               }
             ],
-            staticClass: "page-item"
+            staticClass: "page-item",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.page++
+              }
+            }
           },
           [_vm._m(1)]
         )
