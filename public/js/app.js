@@ -1903,7 +1903,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'new-reply',
-  props: ['endpoint'],
   data: function data() {
     return {
       body: ''
@@ -1918,7 +1917,7 @@ __webpack_require__.r(__webpack_exports__);
     addReply: function addReply() {
       var _this = this;
 
-      axios.post(this.endpoint, {
+      axios.post("".concat(location.pathname, "/replies"), {
         body: this.body
       }).then(function (_ref) {
         var data = _ref.data;
@@ -2037,7 +2036,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -2050,8 +2048,7 @@ __webpack_require__.r(__webpack_exports__);
   mixins: [_mixins_collection_js__WEBPACK_IMPORTED_MODULE_2__["default"]],
   data: function data() {
     return {
-      dataSet: false,
-      endpoint: location.pathname + '/replies'
+      dataSet: false
     };
   },
   created: function created() {
@@ -55785,10 +55782,7 @@ var render = function() {
             on: { updated: _vm.fetch }
           }),
           _vm._v(" "),
-          _c("new-reply", {
-            attrs: { endpoint: _vm.endpoint },
-            on: { created: _vm.add }
-          })
+          _c("new-reply", { on: { created: _vm.add } })
         ],
         1
       )

@@ -15,7 +15,6 @@
                     @updated="fetch" />
 
                 <new-reply
-                    :endpoint="endpoint"
                     @created="add" />
             </div>
         </div>
@@ -43,7 +42,6 @@
         data() {
             return {
                 dataSet : false,
-                endpoint: location.pathname + '/replies',
             }
         },
 
