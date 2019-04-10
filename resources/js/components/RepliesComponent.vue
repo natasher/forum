@@ -10,8 +10,11 @@
 
         <div class="row mt-4">
             <div class="col-md-8">
+                <paginator
+                    :dataSet="dataSet"
+                    @changed="fetch" />
+
                 <new-reply
-                    :endpoint="endpoint"
                     @created="add" />
             </div>
         </div>
@@ -19,8 +22,9 @@
 </template>
 
 <script>
-    import reply from './ReplyComponent.vue'
-    import NewReply from './NewReply.vue'
+    import reply      from './ReplyComponent.vue'
+    import NewReply   from './NewReply.vue'
+    import collection from '../mixins/collection.js'
 
     export default {
 
@@ -31,19 +35,18 @@
             NewReply,
         },
 
-        props: {
-            data: {
-                type    : Array,
-                required: true,
-                default : {},
-            },
-        },
+        mixins: [
+            collection
+        ],
 
         data() {
             return {
-                items   : this.data,
-                endpoint: `${ location.pathname }/replies`,
+                dataSet : false,
             }
+        },
+
+        created() {
+            this.fetch();
         },
 
         computed: {
@@ -51,18 +54,18 @@
         },
 
         methods: {
-            add( reply ) {
-                this.items.push( reply );
-
-                this.$emit( 'added' );
+            fetch( page ) {
+                axios.get( this.url( page ) )
+                    .then( this.refresh );
             },
 
-            remove( index ) {
-                this.items.splice( index, 1 );
+            url( page = 1 ) {
+                return `${ location.pathname }/replies?page=` + page;
+            },
 
-                this.$emit( 'removed' );
-
-                flash( 'Reply was deleted!' );
+            refresh({ data }) {
+                this.dataSet = data;
+                this.items   = data.data;
             },
         },
 

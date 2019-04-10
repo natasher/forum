@@ -37,6 +37,7 @@ window.flash  = function ( message ) {
 Vue.component( 'flash', require( './components/FlashComponent.vue' ).default );
 // Vue.component( 'reply', require( './components/ReplyComponent.vue' ).default );
 // Vue.component( 'replies', require( './components/RepliesComponent.vue' ).default );
+Vue.component( 'paginator', require( './components/Paginator.vue' ).default );
 
 Vue.component( 'thread-view', require( './pages/Thread.vue' ).default );
 
