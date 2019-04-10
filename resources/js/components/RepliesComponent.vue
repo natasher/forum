@@ -12,7 +12,7 @@
             <div class="col-md-8">
                 <paginator
                     :dataSet="dataSet"
-                    @updated="fetch" />
+                    @changed="fetch" />
 
                 <new-reply
                     @created="add" />

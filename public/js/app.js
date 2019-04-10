@@ -1990,8 +1990,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     broadcast: function broadcast() {
-      this.$emit('updated', this.page);
-      return this;
+      return this.$emit('changed', this.page);
     },
     updateUrl: function updateUrl() {
       history.pushState(null, null, "?page=".concat(this.page));
@@ -55779,7 +55778,7 @@ var render = function() {
         [
           _c("paginator", {
             attrs: { dataSet: _vm.dataSet },
-            on: { updated: _vm.fetch }
+            on: { changed: _vm.fetch }
           }),
           _vm._v(" "),
           _c("new-reply", { on: { created: _vm.add } })
