@@ -2,9 +2,8 @@
     <ul class="pagination" v-if="shouldPaginate">
 
         <li class="page-item"
-            v-show="prevUrl"
-            @click.prevent="page--">
-                <a class="page-link" href="#" aria-label="Previous" rel="prev">
+            v-show="prevUrl">
+                <a class="page-link" href="#" aria-label="Previous" rel="prev" @click.prevent="page--">
                     <span aria-hidden="true">&laquo; Previous</span>
                 </a>
         </li>
@@ -12,9 +11,8 @@
         <li class="page-item"><a class="page-link" href="#">2</a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li> -->
         <li class="page-item"
-            v-show="nextUrl"
-            @click.prevent="page++">
-                <a class="page-link" href="#" aria-label="Next" rel="next">
+            v-show="nextUrl">
+                <a class="page-link" href="#" aria-label="Next" rel="next" @click.prevent="page++">
                     <span aria-hidden="true">Next &raquo;</span>
                 </a>
         </li>

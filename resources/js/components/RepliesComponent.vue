@@ -15,7 +15,7 @@
                     @updated="fetch" />
 
                 <new-reply
-                    :endpoint="url"
+                    :endpoint="endpoint"
                     @created="add" />
             </div>
         </div>
@@ -25,7 +25,6 @@
 <script>
     import reply      from './ReplyComponent.vue'
     import NewReply   from './NewReply.vue'
-    import paginator  from './Paginator.vue'
     import collection from '../mixins/collection.js'
 
     export default {
@@ -35,7 +34,6 @@
         components: {
             reply,
             NewReply,
-            paginator,
         },
 
         mixins: [
@@ -45,6 +43,7 @@
         data() {
             return {
                 dataSet : false,
+                endpoint: location.pathname + '/replies',
             }
         },
 
@@ -63,7 +62,7 @@
             },
 
             url( page = 1 ) {
-                return `${ location.pathname }/replies?=` + page;
+                return `${ location.pathname }/replies?page=` + page;
             },
 
             refresh({ data }) {

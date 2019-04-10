@@ -1964,8 +1964,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'paginator',
   props: ['dataSet'],
@@ -1981,11 +1979,19 @@ __webpack_require__.r(__webpack_exports__);
       this.page = this.dataSet.current_page;
       this.prevUrl = this.dataSet.prev_page_url;
       this.nextUrl = this.dataSet.next_page_url;
+    },
+    page: function page() {
+      this.broadcast();
     }
   },
   computed: {
     shouldPaginate: function shouldPaginate() {
       return !!this.prevUrl || !!this.nextUrl;
+    }
+  },
+  methods: {
+    broadcast: function broadcast() {
+      this.$emit('updated', this.page);
     }
   }
 });
@@ -2003,8 +2009,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ReplyComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReplyComponent.vue */ "./resources/js/components/ReplyComponent.vue");
 /* harmony import */ var _NewReply_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewReply.vue */ "./resources/js/components/NewReply.vue");
-/* harmony import */ var _Paginator_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Paginator.vue */ "./resources/js/components/Paginator.vue");
-/* harmony import */ var _mixins_collection_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mixins/collection.js */ "./resources/js/mixins/collection.js");
+/* harmony import */ var _mixins_collection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/collection.js */ "./resources/js/mixins/collection.js");
 //
 //
 //
@@ -2029,7 +2034,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 
@@ -2037,13 +2041,13 @@ __webpack_require__.r(__webpack_exports__);
   name: 'replies',
   components: {
     reply: _ReplyComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    NewReply: _NewReply_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    paginator: _Paginator_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    NewReply: _NewReply_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  mixins: [_mixins_collection_js__WEBPACK_IMPORTED_MODULE_3__["default"]],
+  mixins: [_mixins_collection_js__WEBPACK_IMPORTED_MODULE_2__["default"]],
   data: function data() {
     return {
-      dataSet: false
+      dataSet: false,
+      endpoint: location.pathname + '/replies'
     };
   },
   created: function created() {
@@ -2056,7 +2060,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     url: function url() {
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      return "".concat(location.pathname, "/replies?=") + page;
+      return "".concat(location.pathname, "/replies?page=") + page;
     },
     refresh: function refresh(_ref) {
       var data = _ref.data;
@@ -55660,15 +55664,28 @@ var render = function() {
                 expression: "prevUrl"
               }
             ],
-            staticClass: "page-item",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.page--
-              }
-            }
+            staticClass: "page-item"
           },
-          [_vm._m(0)]
+          [
+            _c(
+              "a",
+              {
+                staticClass: "page-link",
+                attrs: { href: "#", "aria-label": "Previous", rel: "prev" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.page--
+                  }
+                }
+              },
+              [
+                _c("span", { attrs: { "aria-hidden": "true" } }, [
+                  _vm._v("« Previous")
+                ])
+              ]
+            )
+          ]
         ),
         _vm._v(" "),
         _c(
@@ -55682,47 +55699,33 @@ var render = function() {
                 expression: "nextUrl"
               }
             ],
-            staticClass: "page-item",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.page++
-              }
-            }
+            staticClass: "page-item"
           },
-          [_vm._m(1)]
+          [
+            _c(
+              "a",
+              {
+                staticClass: "page-link",
+                attrs: { href: "#", "aria-label": "Next", rel: "next" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.page++
+                  }
+                }
+              },
+              [
+                _c("span", { attrs: { "aria-hidden": "true" } }, [
+                  _vm._v("Next »")
+                ])
+              ]
+            )
+          ]
         )
       ])
     : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "page-link",
-        attrs: { href: "#", "aria-label": "Previous", rel: "prev" }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("« Previous")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "page-link",
-        attrs: { href: "#", "aria-label": "Next", rel: "next" }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("Next »")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -55779,7 +55782,7 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("new-reply", {
-            attrs: { endpoint: _vm.url },
+            attrs: { endpoint: _vm.endpoint },
             on: { created: _vm.add }
           })
         ],
@@ -68095,6 +68098,7 @@ window.flash = function (message) {
 Vue.component('flash', __webpack_require__(/*! ./components/FlashComponent.vue */ "./resources/js/components/FlashComponent.vue").default); // Vue.component( 'reply', require( './components/ReplyComponent.vue' ).default );
 // Vue.component( 'replies', require( './components/RepliesComponent.vue' ).default );
 
+Vue.component('paginator', __webpack_require__(/*! ./components/Paginator.vue */ "./resources/js/components/Paginator.vue").default);
 Vue.component('thread-view', __webpack_require__(/*! ./pages/Thread.vue */ "./resources/js/pages/Thread.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
