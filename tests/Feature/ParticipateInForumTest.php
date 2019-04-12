@@ -34,8 +34,9 @@ class ParticipateInForum extends TestCase
         $this->post( $thread->path() . '/replies', $reply->toArray() );
 
         // Then their reply should be visible on the page.
-        $this->get( $thread->path() )
-            ->assertSee( $reply->body );
+        $this->assertDatabaseHas( 'replies', [ 'body' => $reply->body ]);
+        // Should increment replies_count on Thread
+        $this->assertEquals( 1, $thread->fresh()->replies_count );
     }
 
     /** @test */
@@ -76,6 +77,7 @@ class ParticipateInForum extends TestCase
             ->assertStatus( 302 );
 
         $this->assertDatabaseMissing( 'replies', [ 'id' => $reply->id ]);
+        $this->assertEquals( 0, $reply->thread->fresh()->replies_count );
     }
 
     /** @test */
