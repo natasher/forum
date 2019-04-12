@@ -35,6 +35,8 @@ class ParticipateInForum extends TestCase
 
         // Then their reply should be visible on the page.
         $this->assertDatabaseHas( 'replies', [ 'body' => $reply->body ]);
+        // Should increment replies_count on Thread
+        $this->assertEquals( 1, $thread->fresh()->replies_count );
     }
 
     /** @test */
