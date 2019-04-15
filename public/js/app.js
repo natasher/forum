@@ -2206,11 +2206,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SubscribeButton',
-  data: function data() {
-    return {
-      active: false
-    };
-  },
+  props: ['active'],
   methods: {
     subscribe: function subscribe() {
       axios.post("".concat(location.pathname, "/subscriptions")).then(function () {

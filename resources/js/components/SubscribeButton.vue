@@ -12,11 +12,7 @@ export default {
 
     name: 'SubscribeButton',
 
-    data() {
-        return {
-            active: false,
-        }
-    },
+    props: [ 'active', ],
 
     methods: {
         subscribe() {
