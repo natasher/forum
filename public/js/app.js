@@ -2211,6 +2211,7 @@ __webpack_require__.r(__webpack_exports__);
         flash('Subscribed');
       }).catch(function (e) {
         console.error('something fucks up');
+        console.error(e);
       });
     }
   }

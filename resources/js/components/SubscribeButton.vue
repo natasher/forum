@@ -19,6 +19,7 @@ export default {
                 })
                 .catch(function ( e ) {
                     console.error( 'something fucks up' )
+                    console.error( e )
                 })
         },
     },
