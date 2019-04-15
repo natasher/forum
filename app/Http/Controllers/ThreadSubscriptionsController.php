@@ -6,5 +6,10 @@ use Illuminate\Http\Request;
 
 class ThreadSubscriptionsController extends Controller
 {
-    //
+
+    public function store()
+    {
+
+    }
+
 }
