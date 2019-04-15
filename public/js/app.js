@@ -2203,8 +2203,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SubscribeButton',
+  data: function data() {
+    return {
+      active: false
+    };
+  },
   methods: {
     subscribe: function subscribe() {
       axios.post("".concat(location.pathname, "/subscriptions")).then(function () {
@@ -55972,7 +55978,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "button",
-    { staticClass: "btn btn-default", on: { click: _vm.subscribe } },
+    {
+      staticClass: "btn",
+      class: _vm.active ? "btn-primary" : "btn-default",
+      on: { click: _vm.subscribe }
+    },
     [_vm._v("\n        Subscribe\n")]
   )
 }
