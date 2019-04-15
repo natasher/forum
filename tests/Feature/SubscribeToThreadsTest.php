@@ -8,7 +8,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ThreadTest extends TestCase
+class SubscribeToThreadsTest extends TestCase
 {
 
     use RefreshDatabase;
@@ -33,6 +33,18 @@ class ThreadTest extends TestCase
 
         // A notification should be prepared for the user.
         // $this->assertCount( 1, auth()->user()->notifications );
+    }
+
+    /** @test */
+    public function a_user_can_unsubscribe_from_threads()
+    {
+        $this->signIn();
+
+        $thread = create( Thread::class );
+
+        $this->delete( $thread->path() . '/subscriptions' );
+
+        $this->assertCount( 0, $thread->subscriptions );
     }
 
 }
