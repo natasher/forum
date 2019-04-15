@@ -66,7 +66,7 @@ class ThreadTest extends TestCase
         $thread->subscribe();
 
         // Then we should be able to fetch all threads that the user has subscribed to.
-        $thread->subscriptions()->where( 'user_id', auth()->is() )->get();
+        $thread->subscriptions()->where( 'user_id', auth()->id() )->get();
     }
 
 }
