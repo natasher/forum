@@ -1,7 +1,6 @@
 <template>
     <button
-        class="btn"
-        :class="active ? 'btn-primary' : 'btn-default'"
+        :class="classes"
         @click="subscribe">
             Subscribe
     </button>
@@ -13,6 +12,17 @@ export default {
     name: 'SubscribeButton',
 
     props: [ 'active', ],
+
+    computed: {
+        classes() {
+            return [
+                'btn',
+                this.active
+                    ? 'btn-primary'
+                    : 'btn-default'
+            ]
+        },
+    },
 
     methods: {
         subscribe() {
