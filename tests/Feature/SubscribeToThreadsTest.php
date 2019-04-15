@@ -16,6 +16,8 @@ class ThreadTest extends TestCase
     /** @test */
     public function a_user_can_subscribe_to_threads()
     {
+        $this->signIn();
+
         $thread = create( Thread::class );
 
         $this->post( $thread->path() . '/subscriptions' );
