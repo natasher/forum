@@ -39,7 +39,8 @@
                             This thread was published {{ $thread->created_at->diffForHumans() }} by
                             <a href="{{ route( 'profile', $thread->creator ) }}">{{ $thread->creator->name }}</a>, and currently has
                             <span v-text="repliesCount"></span>
-                            comments.
+                            {{ str_plural( 'comment', $thread->replies_count ) }}
+                            .
                         </p>
                     </div>
 
