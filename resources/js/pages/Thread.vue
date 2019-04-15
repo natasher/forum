@@ -1,5 +1,6 @@
 <script>
     import replies from '../components/RepliesComponent.vue'
+    import SubscribeButton from '../components/SubscribeButton.vue'
 
     export default {
 
@@ -7,6 +8,7 @@
 
         components: {
             replies,
+            SubscribeButton,
         },
 
         props: [ 'initialRepliesCount' ],

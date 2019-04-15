@@ -5,7 +5,7 @@
 <script>
 export default {
 
-    name: 'subscribe-button',
+    name: 'SubscribeButton',
 
 }
 </script>
