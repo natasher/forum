@@ -16,13 +16,18 @@ class ThreadTest extends TestCase
     /** @test */
     public function a_user_can_subscribe_to_threads()
     {
+        // Given we have auth user.
         $this->signIn();
 
+        // And we have a thread...
         $thread = create( Thread::class );
 
+        // And the user subscribes to the thread...
         $this->post( $thread->path() . '/subscriptions' );
 
-        $this->assertCount( 1, $thread->subscriptions );
+        // Then, each time a new reply is left...
+
+        // A notification should be prepared for the user.
     }
 
 }
