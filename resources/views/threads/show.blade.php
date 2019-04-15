@@ -45,7 +45,7 @@
 
                         <p>
                             <subscribe-button
-                                :active="true" />
+                                :active="{{ $thread->isSubscribeTo }}" />
                         </p>
                     </div>
 
