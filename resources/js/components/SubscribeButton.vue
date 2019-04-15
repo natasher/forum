@@ -32,10 +32,11 @@ export default {
 
     methods: {
         subscribe() {
-            axios.post( `${ location.pathname }/subscriptions` )
+            axios[
+                this.state ? 'delete' : 'post'
+            ]( `${ location.pathname }/subscriptions` )
                 .then(() => {
-                    this.state = true
-                    flash( 'Subscribed' )
+                    this.state = ! this.state
                 })
                 .catch(( e ) => {
                     console.error( 'something fucks up' )

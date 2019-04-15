@@ -2220,9 +2220,8 @@ __webpack_require__.r(__webpack_exports__);
     subscribe: function subscribe() {
       var _this = this;
 
-      axios.post("".concat(location.pathname, "/subscriptions")).then(function () {
-        _this.state = true;
-        flash('Subscribed');
+      axios[this.state ? 'delete' : 'post']("".concat(location.pathname, "/subscriptions")).then(function () {
+        _this.state = !_this.state;
       }).catch(function (e) {
         console.error('something fucks up');
         console.error(e);
