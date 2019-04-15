@@ -2206,14 +2206,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SubscribeButton',
   props: ['active'],
+  data: function data() {
+    return {
+      state: this.active
+    };
+  },
   computed: {
     classes: function classes() {
-      return ['btn', this.active ? 'btn-primary' : 'btn-default'];
+      return ['btn', this.state ? 'btn-primary' : 'btn-default'];
     }
   },
   methods: {
     subscribe: function subscribe() {
+      var _this = this;
+
       axios.post("".concat(location.pathname, "/subscriptions")).then(function () {
+        _this.state = true;
         flash('Subscribed');
       }).catch(function (e) {
         console.error('something fucks up');

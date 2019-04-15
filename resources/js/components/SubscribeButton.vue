@@ -13,11 +13,17 @@ export default {
 
     props: [ 'active', ],
 
+    data() {
+        return {
+            state: this.active,
+        }
+    },
+
     computed: {
         classes() {
             return [
                 'btn',
-                this.active
+                this.state
                     ? 'btn-primary'
                     : 'btn-default'
             ]
@@ -27,10 +33,11 @@ export default {
     methods: {
         subscribe() {
             axios.post( `${ location.pathname }/subscriptions` )
-                .then(function () {
+                .then(() => {
+                    this.state = true
                     flash( 'Subscribed' )
                 })
-                .catch(function ( e ) {
+                .catch(( e ) => {
                     console.error( 'something fucks up' )
                     console.error( e )
                 })
