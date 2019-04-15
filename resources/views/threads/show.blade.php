@@ -42,6 +42,10 @@
                             {{ str_plural( 'comment', $thread->replies_count ) }}
                             .
                         </p>
+
+                        <p>
+                            <subscribe-button />
+                        </p>
                     </div>
 
                 </div>
