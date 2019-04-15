@@ -57,4 +57,14 @@ class Thread extends Model
         return $filters->apply( $query );
     }
 
+    public function subscribe()
+    {
+
+    }
+
+    public function subscriptions()
+    {
+
+    }
+
 }
