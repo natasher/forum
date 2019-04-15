@@ -26,8 +26,13 @@ class ThreadTest extends TestCase
         $this->post( $thread->path() . '/subscriptions' );
 
         // Then, each time a new reply is left...
+        $thread->addReply([
+            'user_id' => auth()->id(),
+            'body'    => 'Some reply here',
+        ]);
 
         // A notification should be prepared for the user.
+        // $this->assertCount( 1, auth()->user()->notifications );
     }
 
 }
