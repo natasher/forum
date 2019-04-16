@@ -8,15 +8,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class NotificationsTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
+    use RefreshDatabase;
 
-        $response->assertStatus(200);
+    /** @test */
+    function a_notification_is_prepared_when_a_subscribed_thread_receives_a_new_reply()
+    {
+
     }
+
 }
