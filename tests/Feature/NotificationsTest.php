@@ -38,4 +38,23 @@ class NotificationsTest extends TestCase
         $this->assertCount( 1, auth()->user()->fresh()->notifications );
     }
 
+    /** @test */
+    public function a_user_can_clear_a_notification()
+    {
+        $this->signIn();
+
+        $thread = create( Thread::class )->subscribe();
+
+        $thread->addReply([
+            'user_id' => create( User::class )->id,
+            'body'    => 'Some reply here'
+        ]);
+
+        $this->assertCount( 1, auth()->user()->unreadNotifications );
+
+        $this->delete( $endpoint );
+
+        $this->assertCount( 0, auth()->user()->fresh()->unreadNotifications );
+    }
+
 }
