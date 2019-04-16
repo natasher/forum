@@ -50,13 +50,15 @@ class NotificationsTest extends TestCase
             'body'    => 'Some reply here'
         ]);
 
-        $this->assertCount( 1, auth()->user()->unreadNotifications );
+        $user = auth()->user();
 
-        $notificationId = auth()->user()->unreadNotifications->first()->id;
+        $this->assertCount( 1, $user->unreadNotifications );
 
-        $this->delete( "/profiles/{auth()->user()->name}/notifications/{$notificationId}" );
+        $notificationId = $user->unreadNotifications->first()->id;
 
-        $this->assertCount( 0, auth()->user()->fresh()->unreadNotifications );
+        $this->delete( "/profiles/{$user->name}/notifications/{$notificationId}" );
+
+        $this->assertCount( 0, $user->fresh()->unreadNotifications );
     }
 
 }
