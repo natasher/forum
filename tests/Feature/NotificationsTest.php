@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\User;
 use App\Thread;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -28,6 +29,13 @@ class NotificationsTest extends TestCase
 
         // A notification should be prepared for the user.
         $this->assertCount( 0, auth()->user()->fresh()->notifications );
+
+        $thread->addReply([
+            'user_id' => create( User::class )->id,
+            'body'    => 'Someonelse reply here',
+        ]);
+
+        $this->assertCount( 1, auth()->user()->fresh()->notifications );
     }
 
 }
