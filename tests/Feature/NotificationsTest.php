@@ -12,7 +12,7 @@ class NotificationsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function a_notification_is_prepared_when_a_subscribed_thread_receives_a_new_reply()
+    function a_notification_is_prepared_when_a_subscribed_thread_receives_a_new_reply_that_is_not_by_the_current_user()
     {
         $this->signIn();
 
@@ -27,7 +27,7 @@ class NotificationsTest extends TestCase
         ]);
 
         // A notification should be prepared for the user.
-        $this->assertCount( 1, auth()->user()->fresh()->notifications );
+        $this->assertCount( 0, auth()->user()->fresh()->notifications );
     }
 
 }
