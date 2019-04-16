@@ -7,6 +7,7 @@ use App\Thread;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Notifications\DatabaseNotification;
 
 class NotificationsTest extends TestCase
 {
@@ -46,12 +47,13 @@ class NotificationsTest extends TestCase
     /** @test */
     public function a_user_can_fetch_their_unread_notifications()
     {
-        $thread = create( Thread::class )->subscribe();
+        create( DatabaseNotification::class );
+        // $thread = create( Thread::class )->subscribe();
 
-        $thread->addReply([
-            'user_id' => create( User::class )->id,
-            'body'    => 'Some reply here'
-        ]);
+        // $thread->addReply([
+        //     'user_id' => create( User::class )->id,
+        //     'body'    => 'Some reply here'
+        // ]);
 
         $user = auth()->user();
 
