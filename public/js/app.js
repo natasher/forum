@@ -2257,6 +2257,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'user-notifications',
   data: function data() {
@@ -2270,6 +2272,11 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/profiles/' + window.App.user.name + '/notifications').then(function (resp) {
       return _this.notifications = resp.data;
     });
+  },
+  methods: {
+    markAsRead: function markAsRead(notification) {
+      axios.delete('/profiles/' + window.App.user.name + '/notifications/' + notification.id);
+    }
   }
 });
 
@@ -56083,7 +56090,12 @@ var render = function() {
               [
                 _c("a", {
                   attrs: { href: notification.data.link },
-                  domProps: { textContent: _vm._s(notification.data.message) }
+                  domProps: { textContent: _vm._s(notification.data.message) },
+                  on: {
+                    click: function($event) {
+                      return _vm.markAsRead(notification)
+                    }
+                  }
                 })
               ]
             )
