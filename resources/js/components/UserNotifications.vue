@@ -7,7 +7,7 @@
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#" v-for="notification in notifications">
-                {{ notification }}
+                <a :href="notification.data.link" v-text="notification.data.message"></a>
             </a>
         </div>
 

@@ -56080,7 +56080,12 @@ var render = function() {
             return _c(
               "a",
               { staticClass: "dropdown-item", attrs: { href: "#" } },
-              [_vm._v("\n            " + _vm._s(notification) + "\n        ")]
+              [
+                _c("a", {
+                  attrs: { href: notification.data.link },
+                  domProps: { textContent: _vm._s(notification.data.message) }
+                })
+              ]
             )
           }),
           0
