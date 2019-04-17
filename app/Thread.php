@@ -4,6 +4,7 @@ namespace App;
 
 use App\Reply;
 use App\Channel;
+use App\Events\ThreadHasNewReply;
 use App\Notifications\ThreadWasUpdated;
 use Illuminate\Database\Eloquent\Model;
 
