@@ -4,6 +4,7 @@ namespace App;
 
 use App\Reply;
 use App\Channel;
+use App\Events\ThreadHasNewReply;
 use App\Notifications\ThreadWasUpdated;
 use Illuminate\Database\Eloquent\Model;
 
@@ -54,14 +55,17 @@ class Thread extends Model
     {
         $reply = $this->replies()->create( $reply );
 
-        $this->subscriptions
-            ->filter(function ( $sub ) use ( $reply ) {
-                return $sub->user_id != $reply->user_id;
-            })
-            ->each
-            ->notify( $reply );
+        $this->notifySubscribers( $reply );
 
         return $reply;
+    }
+
+    public function notifySubscribers( $reply )
+    {
+        $this->subscriptions
+            ->where( 'user_id', '!=', $reply->user_id )
+            ->each
+            ->notify( $reply );
     }
 
     public function scopeFilter( $query, $filters )
