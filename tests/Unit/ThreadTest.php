@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\User;
 use App\Thread;
+use Carbon\Carbon;
 use Tests\TestCase;
 use App\Notifications\ThreadWasUpdated;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -125,6 +126,11 @@ class ThreadTest extends TestCase
         $thread = create( Thread::class );
 
         $this->assertTrue( $thread->hasUpdatesFor( auth()->user() ));
+
+        $key = sprintf( "users.%s.visits.%s", auth()->id(), $thread->id );
+        cache()->forever( $key, Carbon::now() );
+
+        $this->assertFalse( $thread->hasUpdatesFor( auth()->user() ));
     }
 
 }
