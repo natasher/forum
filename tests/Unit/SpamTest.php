@@ -19,6 +19,10 @@ class SpamTest extends TestCase
         $this->assertFalse(
             $spam->detect( 'Innocent reply here' )
         );
+
+        $this->expectException( 'Exception' );
+
+        $spam->detect( 'yahoo customer support' );
     }
 
 }
