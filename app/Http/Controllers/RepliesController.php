@@ -45,6 +45,10 @@ class RepliesController extends Controller
             'body' => 'required',
         ]);
 
+        if ( str_contains( request( 'body' ), 'Yahoo Customer Support' ) ) {
+            throw new \Exception( 'Your reply contains spam' );
+        }
+
         $reply = $thread->addReply([
             'body'    => request( 'body' ),
             'user_id' => auth()->id()
