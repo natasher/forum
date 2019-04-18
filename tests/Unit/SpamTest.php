@@ -8,13 +8,16 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SpamTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    use RefreshDatabase;
+
+    /** @test */
+    public function it_validates_spam()
     {
-        $this->assertTrue(true);
+        $spam = new Spam();
+
+        $this->assertFalse(
+            $spam->detect( 'Innocent reply here' )
+        );
     }
+
 }
