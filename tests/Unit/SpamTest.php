@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Spam;
 use Tests\TestCase;
+use App\Inspections\Spam;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
