@@ -15,15 +15,6 @@ class Spam
 
     protected function detectInvalidKeywords( $body )
     {
-        $invalidKeyword = [
-            'yahoo customer support',
-        ];
-
-        foreach( $invalidKeyword as $keyword ) {
-            if ( stripos( $body, $keyword ) !== false ) {
-                throw new \Exception( 'Your reply contains spam' );
-            }
-        }
     }
 
     protected function detectKeyHeldDown( $body )
