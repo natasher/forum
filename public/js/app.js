@@ -2178,11 +2178,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     update: function update() {
+      var _this2 = this;
+
       axios.patch('/replies/' + this.data.id, {
         body: this.body
+      }).then(function () {
+        _this2.editing = false;
+        flash('Updated!');
+      }).catch(function (error) {
+        flash(error.response.data, 'danger');
       });
-      this.editing = false;
-      flash('Updated!');
     },
     destroy: function destroy() {
       axios.delete('/replies/' + this.data.id);
