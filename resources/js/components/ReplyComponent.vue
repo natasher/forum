@@ -88,13 +88,21 @@
 
         methods: {
             update() {
-                axios.patch( '/replies/' + this.data.id, {
-                    body: this.body,
-                });
+                axios.patch(
+                    '/replies/' + this.data.id,
+                    {
+                        body: this.body,
+                    })
+                    .then(() => {
 
-                this.editing = false;
+                        this.editing = false;
 
-                flash( 'Updated!' );
+                        flash( 'Updated!' );
+
+                    })
+                    .catch( error => {
+                        flash( error.response.data, 'danger' )
+                    })
             },
 
             destroy() {
