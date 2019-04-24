@@ -6,6 +6,7 @@ class Spam
 {
     protected $inspections = [
         InvalidKeywords::class,
+        KeyHeldDown::class,
     ];
 
     public function detect( $body )
@@ -14,16 +15,7 @@ class Spam
             app( $inspection )->detect( $body );
         }
 
-        $this->detectKeyHeldDown( $body );
-
         return false;
-    }
-
-    protected function detectKeyHeldDown( $body )
-    {
-        if ( preg_match( '/(.)\\1{4,}/', $body ) ) {
-            throw new \Exception( 'Your reply contains multiple repetition of same character' );
-        }
     }
 
 }
