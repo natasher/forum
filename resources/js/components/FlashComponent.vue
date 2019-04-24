@@ -1,6 +1,9 @@
 <template>
-    <div class="alert alert-flash" :class="'alert-'+level" role="alert" v-show="show">
-        <strong>Success!</strong> {{ body }}
+    <div class="alert alert-flash"
+        :class="'alert-'+level"
+        role="alert"
+        v-show="show"
+        v-text="body">
     </div>
 </template>
 
