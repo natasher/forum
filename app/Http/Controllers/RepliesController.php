@@ -94,6 +94,7 @@ class RepliesController extends Controller
         $this->authorize( 'update', $reply );
 
         $this->validate( request(), [ 'body' => 'required' ]);
+        $spam->detect( request( 'body' ) );
 
         $reply->update( request([ 'body' ]) );
     }
