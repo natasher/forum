@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Feature;
+namespace Test\Unit;
 
 use App\User;
 use App\Reply;
