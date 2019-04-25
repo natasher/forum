@@ -45,7 +45,7 @@ class RepliesController extends Controller
         if ( Gate::denies( 'create', new Reply ) ) {
             return response(
                 'You are posting too frequently. Please take a break :)',
-                422
+                429
             );
         }
 
