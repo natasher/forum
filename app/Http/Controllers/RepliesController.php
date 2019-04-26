@@ -50,9 +50,6 @@ class RepliesController extends Controller
         }
 
         try {
-            // request()->validate([ 'body' => 'required|spamfree' ]);
-            $this->validate( request(), [ 'body' => 'required|spamfree' ]);
-
             $reply = $thread->addReply([
                 'body'    => request( 'body' ),
                 'user_id' => auth()->id()
