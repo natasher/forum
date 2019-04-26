@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Reply;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreatePostRequest extends FormRequest
@@ -13,7 +15,7 @@ class CreatePostRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Gate::allows( 'create', new Reply );
     }
 
     /**

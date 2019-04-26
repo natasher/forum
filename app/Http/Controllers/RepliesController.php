@@ -43,13 +43,6 @@ class RepliesController extends Controller
      */
     public function store($channelId, Thread $thread, CreatePostRequest $form)
     {
-        if ( Gate::denies( 'create', new Reply ) ) {
-            return response(
-                'You are posting too frequently. Please take a break :)',
-                429
-            );
-        }
-
         return $thread->addReply([
             'body'    => request( 'body' ),
             'user_id' => auth()->id()

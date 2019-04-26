@@ -126,6 +126,8 @@ class ParticipateInForum extends TestCase
     /** @test */
     function users_may_only_reply_a_maximum_of_once_per_minute()
     {
+        $this->withExceptionHandling();
+
         $this->signIn();
 
         $thread = create( Thread::class );
