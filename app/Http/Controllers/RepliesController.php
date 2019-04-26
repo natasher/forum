@@ -50,19 +50,10 @@ class RepliesController extends Controller
             );
         }
 
-        try {
-            $reply = $thread->addReply([
-                'body'    => request( 'body' ),
-                'user_id' => auth()->id()
-            ]);
-        } catch ( \Exception $e ) {
-            return response(
-                'Sorry, your reply could not be saved at this time.',
-                422
-            );
-        }
-
-        return $reply->load( 'owner' );
+        return $thread->addReply([
+            'body'    => request( 'body' ),
+            'user_id' => auth()->id()
+        ])->load( 'owner' );
     }
 
     /**
