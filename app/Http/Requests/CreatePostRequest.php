@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Reply;
 use Illuminate\Support\Facades\Gate;
+use App\Exceptions\ThrottleException;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreatePostRequest extends FormRequest
@@ -16,6 +17,11 @@ class CreatePostRequest extends FormRequest
     public function authorize()
     {
         return Gate::allows( 'create', new Reply );
+    }
+
+    protected function failedAuthorization()
+    {
+        throw new ThrottleException();
     }
 
     /**
