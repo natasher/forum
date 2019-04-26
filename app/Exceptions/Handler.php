@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use App\Exceptions\ThrottleException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -49,6 +50,10 @@ class Handler extends ExceptionHandler
     {
         if ( $exception instanceof ValidationException ) {
             return response( 'Sorry, validation, failed.', 422 );
+        }
+
+        if ( $exception instanceof ThrottleException ) {
+            return response( 'You are posting too frequently.', 429 );
         }
 
         return parent::render($request, $exception);
