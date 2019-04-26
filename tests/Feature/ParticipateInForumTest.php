@@ -110,7 +110,7 @@ class ParticipateInForum extends TestCase
     /** @test */
     function replies_that_contain_spam_may_not_be_created()
     {
-        // $this->withoutExceptionHandling();
+        $this->withExceptionHandling();
 
         $this->signIn();
 
